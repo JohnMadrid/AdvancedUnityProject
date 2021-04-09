@@ -33,3 +33,17 @@ public class shoot : MonoBehaviour
         
     }
 }
+
+
+/*void fireProjectile()
+{
+    GameObject bullet = Instantiate(projectilePrefab) as GameObject;
+    bullet.transform.position = this.transform.position;
+    Vector3 diff = directionFire - this.transform.position;
+    float rotatez = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+    bullet.transform.rotation = Quaternion.Euler(0f,0f,rotatez);
+    float distance = diff.magnitude;
+    Vector3 direction = diff / distance;
+    direction.Normalize();
+    bullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+}*/

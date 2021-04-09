@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658828, g: 0.49642313, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -456,6 +456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d042dfe2aff4f76a2fab3a179b5634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrust: 50
+  projectilePrefab: {fileID: 483373265900749146, guid: 1930d7f71851d4cc59c444a3b64c0cd9, type: 3}
+  projectileSpeed: 10
   controller: {fileID: 498093560}
   cam: {fileID: 1780219144}
   _speed: 6
@@ -731,7 +734,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944796467}
-  m_LocalRotation: {x: 0.041132137, y: -0.007045536, z: 0.0002900506, w: 0.9991289}
+  m_LocalRotation: {x: 0.041130867, y: -0.010532788, z: 0.00043361375, w: 0.9990982}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1223,7 +1226,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648704975}
-  m_LocalRotation: {x: 0.008782208, y: -0.000000015927723, z: 1.3988599e-10, w: 0.99996144}
+  m_LocalRotation: {x: 0.008782208, y: -0.000000017214111, z: 1.5118373e-10, w: 0.99996144}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1404,7 +1407,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780219141}
-  m_LocalRotation: {x: 0.041461214, y: 0.011046029, z: -0.00045840399, w: 0.999079}
+  m_LocalRotation: {x: 0.04145809, y: 0.016511142, z: -0.00068520306, w: 0.9990036}
   m_LocalPosition: {x: 0, y: 1.46, z: -8.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1554,9 +1557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3475afa7c9c5a0a33ac4e7d82f339d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy1Speed: 8
+  _enemy1Speed: 3
   _rotationSpeed: 3
-  Player1: {fileID: 436240267}
+  PlayerView: {fileID: 498093558}
 --- !u!54 &1855324499
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1765,7 +1768,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042257301}
-  m_LocalRotation: {x: 0.041461214, y: 0.01104603, z: -0.00045840387, w: 0.999079}
+  m_LocalRotation: {x: 0.041458085, y: 0.01651114, z: -0.000685203, w: 0.9990036}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
