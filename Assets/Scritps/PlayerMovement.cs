@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal;
 
-// [SerializeField]
 
 public class PlayerMovement : MonoBehaviour
 {   
@@ -10,32 +11,53 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     
-    public float speed = 6f;
+    [SerializeField]
+    private float _speed = 6f;
 
-    public float turnSmoothTime = 0.1f;
+    private float _turnSmoothTime = 0.1f;
 
-    float turnSmoothVelocity;
+    private float _turnSmoothVelocity;
     // public
-    
-    
+
+    void Start()
+    {
+        // if  lives == 0 
+        // // reset player position
+        // transform.position = new Vector3(0f,0f,0f)
+        
+    }
+ 
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f,vertical).normalized;
-
+        PlayerMoves();
+       
+    }
+    
+    // player movement
+    void PlayerMoves()
+    {
+        // read player inputs on both x and y axis
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        
+        // player and camera move together
         if (direction.magnitude >= 0.1f)
         {
+            // Player rotates and faces the direction in which it is moving and moves where camara is pointing
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            
+            // smooth player rotation movement
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
+                _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+            
+            // Calculate the desired direction of movement depending on the camera movement
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDirection.normalized * speed * Time.deltaTime);
+            controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
         }
     }
 }
 
-// TODO: fixate camara to the back of the player so that it does not need mouse movement
+// TODO: decrease Player lives, create player damage
