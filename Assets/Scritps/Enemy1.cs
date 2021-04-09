@@ -13,7 +13,7 @@ public class Enemy1 : MonoBehaviour
 
     private Vector3 towardsPlayer;
     //  Create reference to the player
-    public Transform Player1;
+    public Transform PlayerView;
     
     void Start()
 
@@ -26,7 +26,7 @@ public class Enemy1 : MonoBehaviour
     void Update()
     {   
         //where the player is
-        Vector3 direction = Player1.position - transform.position;
+        Vector3 direction = PlayerView.position - transform.position;
         
         
         // rotate Enemy1 in the direction of the player, so that it looks at the player
