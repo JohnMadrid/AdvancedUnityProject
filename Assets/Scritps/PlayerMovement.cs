@@ -5,7 +5,12 @@ using UnityEngine;
 // [SerializeField]
 
 public class PlayerMovement : MonoBehaviour
-{   
+{
+    //private float angle;
+    //projectile prefab
+    [SerializeField] private GameObject projectilePrefab;
+    //projectile ammunition speed
+    [SerializeField]private float projectileSpeed = 10f;
     // motor that drives the player
     public CharacterController controller;
     public Transform cam;
@@ -34,8 +39,23 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDirection.normalized * speed * Time.deltaTime);
+            
         }
+        // shoot with left button mouse
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     //firing the projectile
+        //     fireProjectile();
+        //
+        // }
     }
+
+    // void fireProjectile()
+    // {
+    //     GameObject bullet = Instantiate(projectilePrefab) as GameObject;
+    //     bullet.transform.position = this.transform.position;
+    //     bullet.transform.rotation = Quaternion.Euler(0f,angle,0f);
+    // }
 }
 
 // TODO: fixate camara to the back of the player so that it does not need mouse movement
