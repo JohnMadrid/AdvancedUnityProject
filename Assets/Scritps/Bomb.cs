@@ -54,10 +54,13 @@ public class Bomb : MonoBehaviour
             if (i.CompareTag("BoxObstacle"))
             {
                 Destroy(i);
+                Debug.Log("Box's been destroyed");
             } 
             if (i.CompareTag("Enemy1"))
             {
                 Destroy(i);
+                Debug.Log("Enemy's been destroyed");
+                
             }
         }
 
