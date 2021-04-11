@@ -24,7 +24,7 @@ public class Bomb : MonoBehaviour
     void Update()
     {
         countdown -= Time.deltaTime;
-        if (countdown <= 0f && !_explosionOcurred)
+        if (countdown <= 0.0f && !_explosionOcurred)
         {
             explode();
             _explosionOcurred = true;
@@ -58,13 +58,15 @@ public class Bomb : MonoBehaviour
             } 
             if (i.CompareTag("Enemy1"))
             {
-                Destroy(i);
+                i.GetComponent<Enemy1>().Destroy();
+                //Destroy(i);
                 Debug.Log("Enemy's been destroyed");
                 
             }
         }
 
-        //destroy object once the explostion takes place
+        //destroy bomb object once the explostion takes place
+        Debug.Log("the bomb's been destroyed");
         Destroy(this.gameObject);
     }
 }
