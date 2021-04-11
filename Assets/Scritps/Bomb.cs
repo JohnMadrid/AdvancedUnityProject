@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    private float explosionForce = 300f;
+    [SerializeField] private float explosionForce = 300f;
     [SerializeField] private float radius = 10f;
     //effects of the explosion
     private GameObject effects;
@@ -24,7 +24,7 @@ public class Bomb : MonoBehaviour
     void Update()
     {
         countdown -= Time.deltaTime;
-        if (countdown <= 0f && !_explosionOcurred)
+        if (countdown <= 0.0f && !_explosionOcurred)
         {
             explode();
             _explosionOcurred = true;
@@ -56,15 +56,17 @@ public class Bomb : MonoBehaviour
                 Destroy(i);
                 Debug.Log("Box's been destroyed");
             } 
-            if (i.CompareTag("Enemy1"))
-            {
-                Destroy(i);
-                Debug.Log("Enemy's been destroyed");
-                
-            }
+            // if (i.CompareTag("Enemy1"))
+            // {
+            //     //i.GetComponent<Enemy1>().Destroy();
+            //     Destroy(i);
+            //     Debug.Log("Enemy's been destroyed");
+            //     
+            // }
         }
 
-        //destroy object once the explostion takes place
+        //destroy bomb object once the explostion takes place
+        Debug.Log("the bomb's been destroyed");
         Destroy(this.gameObject);
     }
 }

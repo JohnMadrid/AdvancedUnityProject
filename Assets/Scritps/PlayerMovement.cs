@@ -7,8 +7,12 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-
+    // bomb prefab
+    [SerializeField] private GameObject _bombPrefab;
+    // how much time BombPower lasts
+    [SerializeField]private float _bombTimeout = 20f;
+    // true if player caught bomb help.
+    private bool _bombPower = false;
     //how much fore to add to the ejection of the projectile. 
     [SerializeField] private float thrust = 70f;
 
@@ -78,8 +82,17 @@ public class PlayerMovement : MonoBehaviour
         //shoot with left button mouse
         if (Input.GetMouseButtonDown(0))
         {
-            //firing the projectile
-            fireProjectile();
+            if (_bombPower)
+            {
+                //fire bombs
+                fireBomb();
+            }
+            else
+            {
+                //fire  projectiles
+                fireProjectile();
+            }
+        
 
         }
     }
@@ -97,6 +110,38 @@ public class PlayerMovement : MonoBehaviour
         //bullet.GetComponent<Rigidbody>().AddForce(this.transform.position * thrust);
 
     }
+    
+    void fireBomb()
+    {
+        // spawn bombs
+      
+        GameObject bomb = Instantiate(_bombPrefab) as GameObject;
+        //places bomb in player position.
+        bomb.transform.position = this.transform.position + new Vector3(0f, 0.4f, 0f);
+        bomb.transform.rotation = this.transform.rotation;
+        // aplies a force, in the direction of the player, to the bomb rigidbody (Unity API)
+        bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * 20f);
+        
+
+    }
+    
+    
+    
+    public void ActivateBomb()
+    {   
+        // when the player stumbles with BombPower this  function is called and starts the Coroutine
+        _bombPower = true;
+        Debug.Log("Player collided with the BombPower");
+        StartCoroutine(DeactivateBomb());
+    }
+
+    IEnumerator DeactivateBomb()
+    { 
+        yield return new WaitForSeconds(_bombTimeout);
+        _bombPower = false;
+    }
+    
+    
 }
 
 
