@@ -7,8 +7,10 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-
+    // how much time BombPower lasts
+    [SerializeField]private float _bombTimeout = 5f;
+    // true if player caught bomb help.
+    private bool _bombPower = false;
     //how much fore to add to the ejection of the projectile. 
     [SerializeField] private float thrust = 70f;
 
@@ -78,8 +80,16 @@ public class PlayerMovement : MonoBehaviour
         //shoot with left button mouse
         if (Input.GetMouseButtonDown(0))
         {
-            //firing the projectile
-            fireProjectile();
+            if (_bombPower)
+            {
+                //spawn bombs
+            }
+            else
+            {
+                //firing the projectile
+                fireProjectile();
+            }
+        
 
         }
     }
@@ -97,6 +107,24 @@ public class PlayerMovement : MonoBehaviour
         //bullet.GetComponent<Rigidbody>().AddForce(this.transform.position * thrust);
 
     }
+    
+    
+    
+    public void ActivateBomb()
+    {   // if one of the crate objects is captured then the uv light power is activated. The function
+        // DeactivatePowerUp() manages how much time the uv light power is allowed  in the game. 
+        _bombPower = true;
+        Debug.Log("Player collided with the BombPower");
+        StartCoroutine(DeactivateBomb());
+    }
+
+    IEnumerator DeactivateBomb()
+    { 
+        yield return new WaitForSeconds(_bombTimeout);
+        _bombPower = false;
+    }
+    
+    
 }
 
 

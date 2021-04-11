@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
 
         {
             yield return new WaitForSeconds(_timeForNextEnemy1);
-            Instantiate(enemy1Prefab);
+            GameObject enemy1Clone = Instantiate(enemy1Prefab) as GameObject;
 
         }
     }

@@ -46,8 +46,8 @@ public class Enemy1 : MonoBehaviour
         _enemyRigidB.MovePosition(transform.position + (direction * _enemy1Speed * Time.deltaTime));
     }
 
-    public void Destroy()
-    {
-        Destroy(this.gameObject);
-    }
+    // public void Destroy()
+    // {
+    //     Destroy(this.gameObject);
+    // }
 }
