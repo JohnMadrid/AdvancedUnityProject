@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
+    //public GameObject PlayerView1;
+    // Reference to the  PlayerView
+   
     // Start is called before the first frame update
-    [SerializeField] private float _enemy1Speed = 2f;
+
+
+    public static GameObject PlayerView;
+    
+    private float _enemy1Speed = 2f;
 
     [SerializeField] private float _rotationSpeed = 3f;
     //reference to the Enemy1 rigid body
@@ -13,11 +20,15 @@ public class Enemy1 : MonoBehaviour
 
     private Vector3 towardsPlayer;
     //  Create reference to the player
-    public Transform PlayerView;
+    //public Transform PlayerView;
     
     void Start()
 
     {
+        // search for the PlayerView
+        PlayerView = GameObject.FindWithTag("Player");
+        
+        
         _enemyRigidB = this.GetComponent<Rigidbody>();
         transform.position= new Vector3(3f,3f,3f);
     }
@@ -26,7 +37,7 @@ public class Enemy1 : MonoBehaviour
     void Update()
     {   
         //where the player is
-        Vector3 direction = PlayerView.position - transform.position;
+        Vector3 direction = PlayerView.transform.position - transform.position;
         
         
         // rotate Enemy1 in the direction of the player, so that it looks at the player
