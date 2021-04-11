@@ -7,8 +7,10 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // bomb prefab
+    [SerializeField] private GameObject _bombPrefab;
     // how much time BombPower lasts
-    [SerializeField]private float _bombTimeout = 5f;
+    [SerializeField]private float _bombTimeout = 20f;
     // true if player caught bomb help.
     private bool _bombPower = false;
     //how much fore to add to the ejection of the projectile. 
@@ -82,11 +84,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_bombPower)
             {
-                //spawn bombs
+                //fire bombs
+                fireBomb();
             }
             else
             {
-                //firing the projectile
+                //fire  projectiles
                 fireProjectile();
             }
         
@@ -108,11 +111,25 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
+    void fireBomb()
+    {
+        // spawn bombs
+      
+        GameObject bomb = Instantiate(_bombPrefab) as GameObject;
+        //places bomb in player position.
+        bomb.transform.position = this.transform.position + new Vector3(0f, 0.4f, 0f);
+        bomb.transform.rotation = this.transform.rotation;
+        // aplies a force, in the direction of the player, to the bomb rigidbody (Unity API)
+        bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * 20f);
+        
+
+    }
+    
     
     
     public void ActivateBomb()
-    {   // if one of the crate objects is captured then the uv light power is activated. The function
-        // DeactivatePowerUp() manages how much time the uv light power is allowed  in the game. 
+    {   
+        // when the player stumbles with BombPower this  function is called and starts the Coroutine
         _bombPower = true;
         Debug.Log("Player collided with the BombPower");
         StartCoroutine(DeactivateBomb());

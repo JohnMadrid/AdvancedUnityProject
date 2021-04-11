@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    private float explosionForce = 300f;
+    [SerializeField] private float explosionForce = 300f;
     [SerializeField] private float radius = 10f;
     //effects of the explosion
     private GameObject effects;
