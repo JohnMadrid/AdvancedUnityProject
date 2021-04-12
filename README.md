@@ -17,9 +17,9 @@ Through its journey, the player encounters an Enemy that chases him all over the
 
 <h3> Components: </h3>
 <ul> <li> <strong> Player </strong> </li>
-<li>  <strong>Enemy </strong> </li>
+<li>  <strong>Enemy: </strong> This component was developed in Blender. </li>
 <li>  <strong>BoxObstacle </strong> </li>
-<li><strong>Maze:</strong> This component was enterily developed in Blender(The Enemy material was also developed in Blender but we failed to implement it on the game. Please refer to the Images folder).  </li>
+<li><strong>Maze:</strong> This component was enterily developed in Blender.  </li>
 </ul>
 
 <p>Using Blender was perhaps the most challenging part of this project. After many unsuccessful attempts to export our figures from Blender into Unity, we decided to only use part of 
