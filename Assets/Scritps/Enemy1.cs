@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    //public GameObject PlayerView1;
-    // Reference to the  PlayerView
-   
-    // Start is called before the first frame update
-
-
+    //used to grab the PlayerView from the scene 
     public static GameObject PlayerView;
     
     private float _enemy1Speed = 2f;
@@ -19,8 +14,7 @@ public class Enemy1 : MonoBehaviour
     private Rigidbody _enemyRigidB;
 
     private Vector3 towardsPlayer;
-    //  Create reference to the player
-    //public Transform PlayerView;
+   
     
     void Start()
 

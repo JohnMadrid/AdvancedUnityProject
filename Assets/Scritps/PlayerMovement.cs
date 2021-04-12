@@ -7,6 +7,23 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [Header("Jumping")]
+    
+
+    [SerializeField]private float _gravity = 9.5f;
+
+    [SerializeField] private float _jumpS = 3.5f;
+    
+    // keep track of direction
+    private float _directionY;
+    
+   
+    
+    
+    
+    
+    
     // bomb prefab
     [SerializeField] private GameObject _bombPrefab;
     // how much time BombPower lasts
@@ -35,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        
         // if  lives == 0 
         // // reset player position
         // transform.position = new Vector3(0f,0f,0f)
@@ -47,9 +65,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
 
     {
-
+        
         PlayerMoves();
+        
+        
     }
+
+
+
+    
 
     // player movement
     void PlayerMoves()
@@ -58,6 +82,9 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        
+        
+        
 
         // player and camera move together
         if (direction.magnitude >= 0.1f)
@@ -72,12 +99,31 @@ public class PlayerMovement : MonoBehaviour
 
             // Calculate the desired direction of movement depending on the camera movement
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            
+            
+           
 
 
 
             controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
+            
+            
+           
 
         }
+        //JUMPING
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("Space bar pressed");
+            _directionY = _jumpS;
+                
+        }
+
+        _directionY -= _gravity;
+        direction.y = _directionY;
+        controller.Move(direction * _speed * Time.deltaTime);
+        
+       
 
         //shoot with left button mouse
         if (Input.GetMouseButtonDown(0))
@@ -107,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
         bullet.transform.rotation = this.transform.rotation;
         // aplies a force, in the direction of the player, to the bullet rigidbody (Unity API)
         bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 20f);
-        //bullet.GetComponent<Rigidbody>().AddForce(this.transform.position * thrust);
+       
 
     }
     
