@@ -7,7 +7,7 @@ public class Enemy1 : MonoBehaviour
     //used to grab the PlayerView from the scene 
     public static GameObject PlayerView;
     
-    private float _enemy1Speed = 2f;
+    private float _enemy1Speed = 5f;
 
     [SerializeField] private float _rotationSpeed = 3f;
     //reference to the Enemy1 rigid body
@@ -54,5 +54,16 @@ public class Enemy1 : MonoBehaviour
     public void Destroy()
     {
         Destroy(this.gameObject);
+    }
+    
+    // Enemy takes lives from Player
+    void OnTriggerEnter(Collider other) 
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerMovement>().Damage();
+            Destroy(this.gameObject);
+        }
+
     }
 }

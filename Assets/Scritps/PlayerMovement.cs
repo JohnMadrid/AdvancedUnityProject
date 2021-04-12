@@ -2,27 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngineInternal;
 
 
 public class PlayerMovement : MonoBehaviour
 {
 
-    // [Header("Jumping")]
-    
-
-    [SerializeField]
-    private float _gravity = 9.5f;
-    
-    //how hight player jumps
-    // [SerializeField] private float _jumpS = 3.5f;
+    // Jumping settings
+    private float _jumpSpeed = 7f;
+    public Rigidbody rb;
+    private bool _playerOnGround = true;
 
     [SerializeField] 
     private int _lives = 3;
-
-    // [SerializeField] private float _colorChannel = 1f;
-    //
-    // private MaterialPropertyBlock _mpb;
+    
     
     // keep track of direction
     private float _directionY;
@@ -47,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    [SerializeField] private float _speed = 6f;
+    [SerializeField] 
+    private float _speed = 6f;
 
     private float _turnSmoothTime = 0.1f;
 
@@ -58,31 +53,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     
     
-    // public
-    
-
-    void Start()
-    {
-        
-        // if  lives == 0 
-        // // reset player position
-        // transform.position = new Vector3(0f,0f,0f)
-        //returns player camera
-
-
-    }
 
     // Update is called once per frame
     void Update()
 
     {
-        
+
         PlayerMoves();
-        
-       
-        
-        
+
     }
+    
 
     // player movement
     void PlayerMoves()
@@ -113,23 +93,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        //JUMPING
-        // if (Input.GetButtonDown("Jump"))
-        // {
-        //     Debug.Log("Space bar pressed");
-        //    // _directionY = _jumpS;
-        //   
-        //    
-        //
-        // }
-        // _directionY -= _gravity;
-        // direction.y = _directionY;
-
-        //controller.Move(direction  * Time.deltaTime);
-        
-        
-       
-
         //shoot with left button mouse
         if (Input.GetMouseButtonDown(0))
         {
@@ -147,14 +110,9 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
-    //Code based on this video: https://www.youtube.com/watch?v=59No0ybIoxg
-    // void jump()
-    // {
-    //     _directionY = _jumpS;
-    //     _directionY -= _gravity;
-    //     direction.y = _directionY;
-    //     controller.Move(direction * _speed * Time.deltaTime);
-    // }
+    
+    
+
     void fireProjectile()
     {
         // spawn projeciles
@@ -206,13 +164,7 @@ public class PlayerMovement : MonoBehaviour
         // reduce lives by 1
         _lives -= 1;
         Debug.Log("1 life reduced");
-        
-        // reduce player color channel after damage
-        // _colorChannel -= 0.5f;
-        
-        // _mpb.SetColor("_Color",new Color(_colorChannel, 0, _colorChannel,1f));
-        // this.GetComponent<Renderer>().SetPropertyBlock(_mpb);
-        
+
         // player death
         if (_lives == 0)
             
@@ -228,4 +180,4 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-// TODO: decrease Player lives, create player damage
+// TODO: player jump

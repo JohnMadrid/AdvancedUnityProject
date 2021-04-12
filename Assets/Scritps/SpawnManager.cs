@@ -14,12 +14,7 @@ public class SpawnManager : MonoBehaviour
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     private IEnumerator waitAndSpawnEnemy1()
     {
         while (true)
