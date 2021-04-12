@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d042dfe2aff4f76a2fab3a179b5634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gravity: 1
+  _jumpS: 10
   _bombPrefab: {fileID: 1915489137595980068, guid: cad635ef84ea5460197f996b0d60893a, type: 3}
   _bombTimeout: 30
   thrust: 50
@@ -397,10 +399,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.870676
-  m_Height: 10
+  m_Radius: 0.7619742
+  m_Height: 2.0491335
   m_Direction: 1
-  m_Center: {x: -0.09401709, y: 0, z: -0.13128646}
+  m_Center: {x: 0.11811166, y: 0.52456677, z: 0.15878794}
 --- !u!1 &646483626
 GameObject:
   m_ObjectHideFlags: 0
