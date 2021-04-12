@@ -5,14 +5,14 @@
 
 <h3>Description</h3>
 <p>The aim of this game is to find the way out of a Maze. The player is immersed in a 3D environment. 
-Through its journey, the player encounters an Enemy that chases him all over the game. This Enemy spawns over time </p>
+Through its journey, the player encounters an Enemy that chases him all over the game. This Enemy spawns over time. </p>
 
 <h3>Lives:</h3>
 <p>The player starts with a total of 3 lives which are subtracted by 1</p>
 
 <h3>Weapons  </h3>
 <ul> <li> <strong>Projectile:</strong>  The player has an unlimited amount of projectiles that can kill the Enemy </li>
-<li><strong>Bomb: </strong> The Bomb can kill several Enemies at once, destroy BoxObstacles, and can also kill the Player herself if this is within its radius</li>
+<li><strong>Bomb: </strong> The Bomb can kill several Enemies at once, destroy BoxObstacles, and can also kill the Player herself if this is within its radius.</li>
 </ul>
 
 <h3> Components: </h3>
