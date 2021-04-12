@@ -23,6 +23,13 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             Destroy(other);
         }
+        // projectile destroys when hits walls and other objects
+        else if (other.CompareTag("Walls") && other.CompareTag("BombPower") && other.CompareTag("BoxObstable"))
+        {
+            Destroy(gameObject);
+        }
+        
+        
         //if the vaccine and the virus collide 
         // else if (other.CompareTag("Vaccine"))
         // {
@@ -34,8 +41,7 @@ public class Projectile : MonoBehaviour
         //     Destroy(this.gameObject);
         //
         // }
-      
-
+        
     }
     
     // Start is called before the first frame update
@@ -50,4 +56,6 @@ public class Projectile : MonoBehaviour
         // shoots forward
         transform.Translate(Vector3.forward  *_shootingSpeed  * Time.deltaTime);
     }
+    
+    
 }
