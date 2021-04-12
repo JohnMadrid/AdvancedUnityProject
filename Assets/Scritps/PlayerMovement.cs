@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     
 
     [SerializeField]private float _gravity = 9.5f;
-
+    //how hight player jumps
     [SerializeField] private float _jumpS = 3.5f;
     
     // keep track of direction
@@ -75,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
         
         PlayerMoves();
         
+       
+        
         
     }
 
@@ -89,20 +91,6 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        
-        
-        //JUMPING
-        if (Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("Space bar pressed");
-            _directionY = _jumpS;
-                
-        }
-        _directionY -= _gravity;
-        direction.y = _directionY;
-        
-        controller.Move(direction  * Time.deltaTime);
-        
         
         
 
@@ -125,12 +113,25 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
+           controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
 
         }
         
 
-       
+        //JUMPING
+        // if (Input.GetButtonDown("Jump"))
+        // {
+        //     Debug.Log("Space bar pressed");
+        //    // _directionY = _jumpS;
+        //   
+        //    
+        //
+        // }
+        // _directionY -= _gravity;
+        // direction.y = _directionY;
+
+        //controller.Move(direction  * Time.deltaTime);
+        
         
        
 
@@ -151,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
-
+    //Code based on this video: https://www.youtube.com/watch?v=59No0ybIoxg
     // void jump()
     // {
     //     _directionY = _jumpS;
@@ -203,8 +204,16 @@ public class PlayerMovement : MonoBehaviour
         _bombPower = false;
     }
     
+    public void Damage()
     
+    {
+        // here we can implement Player destruction
+        Destroy(this.gameObject);
+    }
 }
+    
+    
+
 
 
 // TODO: decrease Player lives, create player damage
