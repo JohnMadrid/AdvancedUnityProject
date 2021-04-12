@@ -7,6 +7,23 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [Header("Jumping")]
+    
+
+    [SerializeField]private float _gravity = 9.5f;
+    //how hight player jumps
+    [SerializeField] private float _jumpS = 3.5f;
+    
+    // keep track of direction
+    private float _directionY;
+    
+   
+    
+    
+    
+    
+    
     // bomb prefab
     [SerializeField] private GameObject _bombPrefab;
     // how much time BombPower lasts
@@ -31,10 +48,18 @@ public class PlayerMovement : MonoBehaviour
     private float _turnSmoothTime = 0.1f;
 
     private float _turnSmoothVelocity;
+
+
+    private Vector3 direction;
+    private Vector3 moveDirection;
+    
+    
     // public
+    
 
     void Start()
     {
+        
         // if  lives == 0 
         // // reset player position
         // transform.position = new Vector3(0f,0f,0f)
@@ -47,9 +72,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
 
     {
-
+        
         PlayerMoves();
+        
+       
+        
+        
     }
+
+
+
+    
 
     // player movement
     void PlayerMoves()
@@ -57,7 +90,9 @@ public class PlayerMovement : MonoBehaviour
         // read player inputs on both x and y axis
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        
+        
 
         // player and camera move together
         if (direction.magnitude >= 0.1f)
@@ -71,13 +106,34 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             // Calculate the desired direction of movement depending on the camera movement
-            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            
+            
+           
 
 
 
-            controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
+           controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
 
         }
+        
+
+        //JUMPING
+        // if (Input.GetButtonDown("Jump"))
+        // {
+        //     Debug.Log("Space bar pressed");
+        //    // _directionY = _jumpS;
+        //   
+        //    
+        //
+        // }
+        // _directionY -= _gravity;
+        // direction.y = _directionY;
+
+        //controller.Move(direction  * Time.deltaTime);
+        
+        
+       
 
         //shoot with left button mouse
         if (Input.GetMouseButtonDown(0))
@@ -96,7 +152,14 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
-
+    //Code based on this video: https://www.youtube.com/watch?v=59No0ybIoxg
+    // void jump()
+    // {
+    //     _directionY = _jumpS;
+    //     _directionY -= _gravity;
+    //     direction.y = _directionY;
+    //     controller.Move(direction * _speed * Time.deltaTime);
+    // }
     void fireProjectile()
     {
         // spawn projeciles
@@ -107,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
         bullet.transform.rotation = this.transform.rotation;
         // aplies a force, in the direction of the player, to the bullet rigidbody (Unity API)
         bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 20f);
-        //bullet.GetComponent<Rigidbody>().AddForce(this.transform.position * thrust);
+       
 
     }
     
@@ -141,8 +204,16 @@ public class PlayerMovement : MonoBehaviour
         _bombPower = false;
     }
     
+    public void Damage()
     
+    {
+        // here we can implement Player destruction
+        Destroy(this.gameObject);
+    }
 }
+    
+    
+
 
 
 // TODO: decrease Player lives, create player damage
