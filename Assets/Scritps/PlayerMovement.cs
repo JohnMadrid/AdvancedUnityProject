@@ -8,20 +8,24 @@ using UnityEngineInternal;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [Header("Jumping")]
+    // [Header("Jumping")]
     
 
-    [SerializeField]private float _gravity = 9.5f;
+    [SerializeField]
+    private float _gravity = 9.5f;
+    
     //how hight player jumps
-    [SerializeField] private float _jumpS = 3.5f;
+    // [SerializeField] private float _jumpS = 3.5f;
+
+    [SerializeField] 
+    private int _lives = 3;
+
+    // [SerializeField] private float _colorChannel = 1f;
+    //
+    // private MaterialPropertyBlock _mpb;
     
     // keep track of direction
     private float _directionY;
-    
-   
-    
-    
-    
     
     
     // bomb prefab
@@ -80,10 +84,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-
-
-    
-
     // player movement
     void PlayerMoves()
     {
@@ -107,13 +107,8 @@ public class PlayerMovement : MonoBehaviour
 
             // Calculate the desired direction of movement depending on the camera movement
             moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            
-            
-           
-
-
-
-           controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
+             
+            controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
 
         }
         
@@ -204,11 +199,28 @@ public class PlayerMovement : MonoBehaviour
         _bombPower = false;
     }
     
+    // Player Damage
     public void Damage()
-    
+
     {
-        // here we can implement Player destruction
-        Destroy(this.gameObject);
+        // reduce lives by 1
+        _lives -= 1;
+        Debug.Log("1 life reduced");
+        
+        // reduce player color channel after damage
+        // _colorChannel -= 0.5f;
+        
+        // _mpb.SetColor("_Color",new Color(_colorChannel, 0, _colorChannel,1f));
+        // this.GetComponent<Renderer>().SetPropertyBlock(_mpb);
+        
+        // player death
+        if (_lives == 0)
+            
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 }
     
