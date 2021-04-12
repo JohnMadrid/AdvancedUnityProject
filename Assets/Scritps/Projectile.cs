@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
         Debug.Log(other.name);
         if(other.CompareTag("Enemy1")) 
         {
-            //we still need to implment the health of the Player. 
+            //we still need to implement the health of the Player. 
             // if the virus-- which is the current class we are in--- hits the Player we want to kill one of the Player's lives
             // we want to access the Damage function of the Player script
             //use GetComponet, the script --- in this case player--- is also a component. That you can tell if you look at
