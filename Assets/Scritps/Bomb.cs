@@ -56,13 +56,23 @@ public class Bomb : MonoBehaviour
                 Destroy(i);
                 Debug.Log("Box's been destroyed");
             } 
-            // if (i.CompareTag("Enemy1"))
-            // {
-            //     //i.GetComponent<Enemy1>().Destroy();
-            //     Destroy(i);
-            //     Debug.Log("Enemy's been destroyed");
-            //     
-            // }
+            if (i.CompareTag("Enemy1"))
+            {
+                i.GetComponent<Enemy1>().Destroy();
+                //Destroy(i);
+                Debug.Log("Enemy's been destroyed");
+                
+            }
+            
+            if (i.CompareTag("Player"))
+            {
+                Debug.Log("player was hit");
+                i.GetComponent<PlayerMovement>().Damage();
+                //Destroy(i);
+                
+                
+            }
+            
         }
 
         //destroy bomb object once the explostion takes place
