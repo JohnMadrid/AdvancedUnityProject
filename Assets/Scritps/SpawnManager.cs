@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    
     // we want to make this false when the Player is destroyed so that the spawning of the virus stops. 
     private bool _spawningEnemy1ON = true;
     private IEnumerator coroutine;
@@ -24,9 +26,14 @@ public class SpawnManager : MonoBehaviour
 
         {
             yield return new WaitForSeconds(Random.Range(3.0f, 15.0f));
-            //GameObject enemy1Clone = Instantiate(enemy1Prefab) as GameObject;
-            Instantiate(enemy1Prefab);
+            GameObject enemy1Clone = Instantiate(enemy1Prefab) as GameObject;
+            //Instantiate(enemy1Prefab);
 
         }
+    }
+
+    public void DestroyEnemy(GameObject _enemy1Clone)
+    {
+        Destroy(_enemy1Clone);
     }
 }
