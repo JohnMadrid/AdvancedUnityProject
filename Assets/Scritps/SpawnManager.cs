@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private IEnumerator coroutine;
-    [SerializeField] private float _timeForNextEnemy1 = 20f;
+    // Enemy1 spawns with an interval ranging from 3 to 15 seconds
+    //private float _timeForNextEnemy1 = Random.Range(3.0f, 15.0f);
 
     [SerializeField] private GameObject enemy1Prefab;
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class SpawnManager : MonoBehaviour
         while (true)
 
         {
-            yield return new WaitForSeconds(_timeForNextEnemy1);
+            yield return new WaitForSeconds(Random.Range(3.0f, 15.0f));
             GameObject enemy1Clone = Instantiate(enemy1Prefab) as GameObject;
 
         }
