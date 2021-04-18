@@ -8,24 +8,31 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
 
     // Jumping settings
     private float _jumpSpeed = 7f;
     public Rigidbody rb;
     private bool _playerOnGround = true;
 
-    [SerializeField] 
-    private int _lives = 3;
+     
+    public int _lives = 3;
     
     
     // keep track of direction
     private float _directionY;
     
     
+    //reference to the SpawnManager
+    [SerializeField] private GameObject SpawnM;
+    
     // bomb prefab
     [SerializeField] private GameObject _bombPrefab;
     // how much time BombPower lasts
     [SerializeField]private float _bombTimeout = 20f;
+    
+    // how much time SpeedHelp lasts
+    [SerializeField] private float _speedHelpTimeout = 10f;
     // true if player caught bomb help.
     private bool _bombPower = false;
     //how much fore to add to the ejection of the projectile. 
@@ -41,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    [SerializeField] 
+   //player speed
     private float _speed = 6f;
 
     private float _turnSmoothTime = 0.1f;
@@ -169,10 +176,25 @@ public class PlayerMovement : MonoBehaviour
         if (_lives == 0)
             
         {
+            //stop the spawning of  Enemy1
+            SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
+            
             Destroy(gameObject);
         }
 
 
+    }
+
+    public void ActivateSpeed()
+    {
+        _speed = 20f;
+        StartCoroutine(DeactivateSpeed());
+    }
+    
+    IEnumerator DeactivateSpeed()
+    { 
+        yield return new WaitForSeconds(_speedHelpTimeout);
+        _speed = 6f;
     }
 }
     

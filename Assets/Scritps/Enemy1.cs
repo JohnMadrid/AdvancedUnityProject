@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
+    
     // create reference to the SpawnManager so that I can grab its DestroyEnemy method.
     public static GameObject SpawnManagerReference;
     //used to grab the PlayerView from the scene 
@@ -66,8 +67,9 @@ public class Enemy1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerMovement>().Damage();
             SpawnManagerReference.GetComponent<SpawnManager>().DestroyEnemy(this.gameObject);
+            other.GetComponent<PlayerMovement>().Damage();
+            
             //Destroy(this.gameObject);
             
             

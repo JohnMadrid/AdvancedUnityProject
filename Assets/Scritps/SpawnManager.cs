@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     
     // we want to make this false when the Player is destroyed so that the spawning of the virus stops. 
-    private bool _spawningEnemy1ON = true;
+    public bool _spawningEnemy1ON = true;
     private IEnumerator coroutine;
     // Enemy1 spawns with an interval ranging from 3 to 15 seconds
     //private float _timeForNextEnemy1 = Random.Range(3.0f, 15.0f);
