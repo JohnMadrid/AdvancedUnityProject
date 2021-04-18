@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _speedHelpPrefab;
+    [SerializeField] private GameObject _oneLifePrefab;
+    [SerializeField] private GameObject _bombPowerPrefab;
+    
     
     // we want to make this false when the Player is destroyed so that the spawning of the virus stops. 
     public bool _spawningEnemy1ON = true;
@@ -16,6 +20,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //place some _bombPower throughout the maze
+        
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
     }
@@ -35,5 +41,10 @@ public class SpawnManager : MonoBehaviour
     public void DestroyEnemy(GameObject _enemy1Clone)
     {
         Destroy(_enemy1Clone);
+    }
+
+    void PlaceObjects(GameObject prefabObject, int howManyObjects)
+    {
+        
     }
 }
