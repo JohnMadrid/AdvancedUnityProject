@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
             Destroy(other);
         }
         // projectile destroys when hits walls and other objects
-        else if (other.CompareTag("Walls") && other.CompareTag("BombPower") && other.CompareTag("BoxObstable"))
+        else if (other.CompareTag("Walls") | other.CompareTag("BombPower") | other.CompareTag("BoxObstable"))
         {
             Destroy(gameObject);
         }
