@@ -8,24 +8,39 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    
+    //shield
+    [SerializeField] private GameObject PlayerShield;
+    
+    
+    //how much time we want the shield power to last. 
+    [SerializeField] private float _shieldPowerTimeout = 5f;
+    
+    // to know if the shield power is on. This variable is modified from the ShieldPower script
+    private bool _shieldPowerON = false;
     // Jumping settings
     private float _jumpSpeed = 7f;
     public Rigidbody rb;
     private bool _playerOnGround = true;
 
-    [SerializeField] 
-    private int _lives = 3;
+     
+    public int _lives = 3;
     
     
     // keep track of direction
     private float _directionY;
     
     
+    //reference to the SpawnManager
+    [SerializeField] private GameObject SpawnM;
+    
     // bomb prefab
     [SerializeField] private GameObject _bombPrefab;
     // how much time BombPower lasts
     [SerializeField]private float _bombTimeout = 20f;
+    
+    // how much time SpeedHelp lasts
+    [SerializeField] private float _speedHelpTimeout = 10f;
     // true if player caught bomb help.
     private bool _bombPower = false;
     //how much fore to add to the ejection of the projectile. 
@@ -41,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    [SerializeField] 
+   //player speed
     private float _speed = 6f;
 
     private float _turnSmoothTime = 0.1f;
@@ -161,19 +176,59 @@ public class PlayerMovement : MonoBehaviour
     public void Damage()
 
     {
-        // reduce lives by 1
-        _lives -= 1;
-        Debug.Log("1 life reduced");
+        if (!_shieldPowerON)
+        {
+            // reduce lives by 1
+            _lives -= 1;
+            Debug.Log("1 life reduced");
+        }
+      
 
         // player death
         if (_lives == 0)
             
         {
+            //stop the spawning of  Enemy1
+            SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
+            
             Destroy(gameObject);
         }
 
 
     }
+
+    public void ActivateSpeed()
+    {
+        _speed = 20f;
+        StartCoroutine(DeactivateSpeed());
+    }
+    
+    IEnumerator DeactivateSpeed()
+    { 
+        yield return new WaitForSeconds(_speedHelpTimeout);
+        _speed = 6f;
+    }
+    
+    
+    
+    public void ActivateShieldPower()
+    {
+        _shieldPowerON = true;
+        PlayerShield.SetActive(true);
+        Debug.Log("the shieldPower has been activated");
+        StartCoroutine(DeactivateShieldPower());
+    }
+    
+    IEnumerator DeactivateShieldPower()
+    { 
+        yield return new WaitForSeconds(_shieldPowerTimeout);
+        _shieldPowerON = false;
+        PlayerShield.SetActive(false);
+        Debug.Log("The shieldPower has been deactivated");
+        
+    }
+    
+    
 }
     
     
