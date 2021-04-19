@@ -21,6 +21,13 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //place some _bombPower throughout the maze
+        PlaceObjects(_bombPowerPrefab, 5);
+        
+        //place some _speedHelpPrefab throughout the maze
+        PlaceObjects(_speedHelpPrefab, 5);
+        
+        //place some _oneLifePrefab throughout the maze
+        PlaceObjects(_oneLifePrefab, 3);
         
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
@@ -45,6 +52,10 @@ public class SpawnManager : MonoBehaviour
 
     void PlaceObjects(GameObject prefabObject, int howManyObjects)
     {
-        
+        for (int i = 0; i <= howManyObjects; i++)
+        {
+            var position1 = new Vector3(Random.Range(0f, 25f), 0f, Random.Range(0f, 25f));
+            Instantiate(prefabObject, position1, Quaternion.identity );
+        }
     }
 }

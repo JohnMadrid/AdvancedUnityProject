@@ -9,7 +9,8 @@ using UnityEngineInternal;
 public class PlayerMovement : MonoBehaviour
 {
     
-
+    // to know if the shield power is on. This variable is modified from the ShieldPower script
+    public bool _shieldPowerON = false;
     // Jumping settings
     private float _jumpSpeed = 7f;
     public Rigidbody rb;
@@ -168,9 +169,13 @@ public class PlayerMovement : MonoBehaviour
     public void Damage()
 
     {
-        // reduce lives by 1
-        _lives -= 1;
-        Debug.Log("1 life reduced");
+        if (!_shieldPowerON)
+        {
+            // reduce lives by 1
+            _lives -= 1;
+            Debug.Log("1 life reduced");
+        }
+      
 
         // player death
         if (_lives == 0)
