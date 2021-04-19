@@ -9,10 +9,9 @@ public class ShieldPower : MonoBehaviour
     //public static GameObject PlayerViewReference;
     
     //referecne to playerView
-    private Collider PlayerViewC;
+    //private Collider PlayerViewC;
     
-    //how much time we want the shield power to last. 
-    [SerializeField] private float _shieldPowerTimeout = 5f;
+    
     
     void Start()
     {
@@ -25,34 +24,19 @@ public class ShieldPower : MonoBehaviour
         
     }
     
-    public void ActivateShieldPower()
-    {
-        PlayerViewC.GetComponent<PlayerMovement>()._shieldPowerON = true;
-        Debug.Log("the shieldPower has been activated");
-        StartCoroutine(DeactivateShieldPower());
-    }
     
-    IEnumerator DeactivateShieldPower()
-    { 
-        yield return new WaitForSeconds(_shieldPowerTimeout);
-        PlayerViewC.GetComponent<PlayerMovement>()._shieldPowerON = false;
-        Debug.Log("The shieldPower has been deactivated");
-        
-    }
     
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
+        // if the player collides with BombPower
+        Debug.Log(other.name);
         if (other.CompareTag("Player"))
         {
             
-            //other.GetComponent<PlayerMovement>()._shieldPowerON = true;
-            PlayerViewC =  other;
-            ActivateShieldPower();
+            other.GetComponent<PlayerMovement>().ActivateShieldPower();
 
-            Destroy(this.gameObject);
-
-
+            Destroy(gameObject);
+            
         }
-
     }
 }

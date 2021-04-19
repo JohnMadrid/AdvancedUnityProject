@@ -8,9 +8,11 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //how much time we want the shield power to last. 
+    [SerializeField] private float _shieldPowerTimeout = 5f;
     
     // to know if the shield power is on. This variable is modified from the ShieldPower script
-    public bool _shieldPowerON = false;
+    private bool _shieldPowerON = false;
     // Jumping settings
     private float _jumpSpeed = 7f;
     public Rigidbody rb;
@@ -201,6 +203,25 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(_speedHelpTimeout);
         _speed = 6f;
     }
+    
+    
+    
+    public void ActivateShieldPower()
+    {
+        _shieldPowerON = true;
+        Debug.Log("the shieldPower has been activated");
+        StartCoroutine(DeactivateShieldPower());
+    }
+    
+    IEnumerator DeactivateShieldPower()
+    { 
+        yield return new WaitForSeconds(_shieldPowerTimeout);
+        _shieldPowerON = false;
+        Debug.Log("The shieldPower has been deactivated");
+        
+    }
+    
+    
 }
     
     
