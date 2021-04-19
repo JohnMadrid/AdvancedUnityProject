@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 45e737a744e274950b53c16856a87139
+guid: 2bdfc77b5e82b4686a1f8cf7a88db5fe
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MazeWalls
+    second: {fileID: 2100000, guid: 4ac181dee99824afdb6c7a668f53ccee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,7 +36,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 50
@@ -85,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 50
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
