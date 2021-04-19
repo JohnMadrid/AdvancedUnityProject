@@ -8,6 +8,11 @@ using UnityEngineInternal;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+    //shield
+    [SerializeField] private GameObject PlayerShield;
+    
+    
     //how much time we want the shield power to last. 
     [SerializeField] private float _shieldPowerTimeout = 5f;
     
@@ -209,6 +214,7 @@ public class PlayerMovement : MonoBehaviour
     public void ActivateShieldPower()
     {
         _shieldPowerON = true;
+        PlayerShield.SetActive(true);
         Debug.Log("the shieldPower has been activated");
         StartCoroutine(DeactivateShieldPower());
     }
@@ -217,6 +223,7 @@ public class PlayerMovement : MonoBehaviour
     { 
         yield return new WaitForSeconds(_shieldPowerTimeout);
         _shieldPowerON = false;
+        PlayerShield.SetActive(false);
         Debug.Log("The shieldPower has been deactivated");
         
     }

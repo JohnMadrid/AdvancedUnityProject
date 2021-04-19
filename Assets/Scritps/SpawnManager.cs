@@ -21,13 +21,13 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //place some _bombPower throughout the maze
-        PlaceObjects(_bombPowerPrefab, 5);
+        PlaceObjects(_bombPowerPrefab, 2);
         
         //place some _speedHelpPrefab throughout the maze
-        PlaceObjects(_speedHelpPrefab, 5);
+        PlaceObjects(_speedHelpPrefab, 2);
         
         //place some _oneLifePrefab throughout the maze
-        PlaceObjects(_oneLifePrefab, 3);
+        PlaceObjects(_oneLifePrefab, 2);
         
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
