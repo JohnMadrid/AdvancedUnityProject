@@ -34,20 +34,23 @@ public class Enemy1 : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        //where the player is
-        Vector3 direction = PlayerView.transform.position - transform.position;
+    {
+        if (!(null == PlayerView))
+        {
+            //where the player is
+            Vector3 direction = PlayerView.transform.position - transform.position;
         
         
-        // rotate Enemy1 in the direction of the player, so that it looks at the player
-         Quaternion rotation = Quaternion.LookRotation(direction);
-         transform.rotation = rotation;
-         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
+            // rotate Enemy1 in the direction of the player, so that it looks at the player
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = rotation;
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
        
-         direction.Normalize();
-         towardsPlayer = direction;
-         //Enemy1 moves towards the player
-         moveEnemy(towardsPlayer);
+            direction.Normalize();
+            towardsPlayer = direction;
+            //Enemy1 moves towards the player
+            moveEnemy(towardsPlayer);
+        }
 
     }
 

@@ -70,17 +70,23 @@ public class PlayerMovement : MonoBehaviour
     
     // animation
     Animator anim;
+    
     private static readonly int Condition = Animator.StringToHash("condition");
 
+    void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+        
 
     // Update is called once per frame
     void Update()
 
     {
-
         PlayerMoves();
 
     }
+    
     
 
     // player movement
@@ -91,7 +97,17 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
         
-        
+        if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
+        {
+            anim.SetInteger("condition", 1);
+            
+        }
+
+        if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.D))
+        {
+            anim.SetInteger("condition", 0);
+            Debug.Log("NOT moving");
+        }
 
         // player and camera move together
         if (direction.magnitude >= 0.1f)
@@ -102,15 +118,18 @@ public class PlayerMovement : MonoBehaviour
             // smooth player rotation movement
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
                 _turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             // Calculate the desired direction of movement depending on the camera movement
             moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
+            
             // if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
             // {
-                // anim.SetInteger(Condition, 1);
-                // Calculate the desired direction of movement depending on the camera movement
+            //     anim.SetInteger(Condition, 1);
+            //     Calculate the desired direction of movement depending on the camera movement
             //     moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //     controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
             // }
@@ -122,23 +141,11 @@ public class PlayerMovement : MonoBehaviour
             //     moveDirection = new Vector3(0, 0, 0);
             //     // controller.Move(moveDirection.normalized * (_speed * Time.deltaTime * 0)); 
             // }
-            moveDirection.y -= gravity * Time.deltaTime;
-            controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
 
         }
-        
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //     anim.SetInteger("condition", 1);
-        // }
-        //
-        // else if (Input.GetKeyUp(KeyCode.W))
-        // {
-        //     anim.SetInteger("condition", 0);
-        // }
 
-        
-        
+
+
 
         //shoot with left button mouse
         if (Input.GetMouseButtonDown(0))
