@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     {
         PlayerMoves();
+        GetInput();
 
     }
     
@@ -99,12 +100,16 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
         {
+            
+            anim.SetBool("running", true); 
             anim.SetInteger("condition", 1);
+            
             
         }
 
         if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.D))
         {
+            anim.SetBool("running", false);
             anim.SetInteger("condition", 0);
             Debug.Log("NOT moving");
         }
@@ -126,49 +131,68 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
             
-            // if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
-            // {
-            //     anim.SetInteger(Condition, 1);
-            //     Calculate the desired direction of movement depending on the camera movement
-            //     moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            //     controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
-            // }
-
-            // if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) |
-            //     Input.GetKeyUp(KeyCode.D))
-            // {
-            //     // anim.SetInteger(Condition, 0);
-            //     moveDirection = new Vector3(0, 0, 0);
-            //     // controller.Move(moveDirection.normalized * (_speed * Time.deltaTime * 0)); 
-            // }
 
         }
 
 
 
 
-        //shoot with left button mouse
+        // //shoot with left button mouse
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     if (_bombPower)
+        //     {
+        //         //fire bombs
+        //         fireBomb();
+        //     }
+        //     else
+        //     {
+        //         //fire  projectiles
+        //         anim.SetInteger("condition", 2);
+        //         fireProjectile();
+        //     }
+        //
+        //
+        // }
+    }
+
+    void GetInput()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            if (_bombPower)
-            {
-                //fire bombs
-                fireBomb();
-            }
-            else
-            {
-                //fire  projectiles
-                fireProjectile();
-            }
-        
-
+            Attacking();
+            
         }
     }
-    
-    
+
+    IEnumerator AttackRoutine()
+    {
+        anim.SetBool("attacking", true);
+        anim.SetInteger("condition", 2);
+        yield return new WaitForSeconds(0.7f);
+        if (_bombPower)
+        {
+            fireBomb();
+        }
+        else
+        {
+            fireProjectile();
+        }
+        anim.SetInteger("condition", 0);
+        anim.SetBool("attacking", false);
+        
+        
+    }
+
+    void Attacking()
+    {
+        StartCoroutine(AttackRoutine());
+        
+    }
 
     void fireProjectile()
     {
+
         // spawn projeciles
         //GameObject bullet = Instantiate(projectilePrefab, transform.position + new Vector3(0f,0.7f,0f));
         GameObject bullet = Instantiate(projectilePrefab) as GameObject;
@@ -181,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
+
     void fireBomb()
     {
         // spawn bombs
