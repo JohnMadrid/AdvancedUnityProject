@@ -66,8 +66,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 direction;
     private Vector3 moveDirection;
+    private float gravity = 9f;
+    
+    // animation
+    Animator anim;
+    private static readonly int Condition = Animator.StringToHash("condition");
 
-   
 
     // Update is called once per frame
     void Update()
@@ -102,10 +106,38 @@ public class PlayerMovement : MonoBehaviour
 
             // Calculate the desired direction of movement depending on the camera movement
             moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-             
+
+            // if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
+            // {
+                // anim.SetInteger(Condition, 1);
+                // Calculate the desired direction of movement depending on the camera movement
+            //     moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //     controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
+            // }
+
+            // if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) |
+            //     Input.GetKeyUp(KeyCode.D))
+            // {
+            //     // anim.SetInteger(Condition, 0);
+            //     moveDirection = new Vector3(0, 0, 0);
+            //     // controller.Move(moveDirection.normalized * (_speed * Time.deltaTime * 0)); 
+            // }
+            moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
 
         }
+        
+        // if (Input.GetKey(KeyCode.W))
+        // {
+        //     anim.SetInteger("condition", 1);
+        // }
+        //
+        // else if (Input.GetKeyUp(KeyCode.W))
+        // {
+        //     anim.SetInteger("condition", 0);
+        // }
+
+        
         
 
         //shoot with left button mouse
