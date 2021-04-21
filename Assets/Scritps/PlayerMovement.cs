@@ -70,6 +70,10 @@ public class PlayerMovement : MonoBehaviour
     
     // animation
     Animator anim;
+
+    // float rot = 0f;
+    // Vector3 moveDir = Vector3.zero;
+    // float rotSpeed = 80f;
     
     private static readonly int Condition = Animator.StringToHash("condition");
 
@@ -84,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     {
         PlayerMoves();
-        GetInput();
+        getInput2();
 
     }
     
@@ -100,18 +104,21 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
         {
-            
+            if (anim.GetBool("attacking"))
+            {
+                return;
+            }
+        
             anim.SetBool("running", true); 
             anim.SetInteger("condition", 1);
-            
-            
+        
         }
-
+        
         if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.D))
         {
             anim.SetBool("running", false);
             anim.SetInteger("condition", 0);
-            Debug.Log("NOT moving");
+            // Debug.Log("NOT moving");
         }
 
         // player and camera move together
@@ -123,6 +130,23 @@ public class PlayerMovement : MonoBehaviour
             // smooth player rotation movement
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
                 _turnSmoothTime);
+            
+            // if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
+            // {
+            //     if (anim.GetBool("attacking"))
+            //     {
+            //         return;
+            //     }
+            //     anim.SetBool("running", true); 
+            //     anim.SetInteger("condition", 1);
+            // }
+            //
+            // if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.D))
+            // {
+            //     anim.SetBool("running", false);
+            //     anim.SetInteger("condition", 0);
+            //     // Debug.Log("NOT moving");
+            // }
 
             // Calculate the desired direction of movement depending on the camera movement
             moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -130,7 +154,6 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
-            
 
         }
 
@@ -148,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
         //     else
         //     {
         //         //fire  projectiles
-        //         anim.SetInteger("condition", 2);
+        //        
         //         fireProjectile();
         //     }
         //
@@ -156,14 +179,64 @@ public class PlayerMovement : MonoBehaviour
         // }
     }
 
+    // void PlayerMoving()
+    // {
+    //     if (Input.GetKey(KeyCode.W))
+    //     {
+    //         if (anim.GetBool("attacking") == true)
+    //         {
+    //             return;
+    //         }
+    //         else if (anim.GetBool("attacking") == false)
+    //         {
+    //             anim.SetBool("running", true);
+    //             anim.SetInteger("condition", 1);
+    //             moveDir = new Vector3(0, 0, 1);
+    //             moveDir *= _speed;
+    //             moveDir = transform.TransformDirection((moveDirection));
+    //         }
+    //
+    //         if (Input.GetKeyUp(KeyCode.W))
+    //         {
+    //             anim.SetBool("running", false);
+    //             anim.SetInteger("condition", 0);
+    //             moveDir = new Vector3(0, 0, 0);
+    //         }
+    //     }
+    //
+    //     rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+    //     transform.eulerAngles = new Vector3(0, rot, 0);
+    //
+    //     moveDir.y -= gravity * Time.deltaTime;
+    //     controller.Move(moveDir * Time.deltaTime);
+    //
+    // }
+
     void GetInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Attacking();
-            
         }
     }
+
+    void getInput2()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (anim.GetBool("running") == true)
+            {
+                anim.SetBool("running", false);
+                anim.SetInteger("condition", 0);
+            }
+            if (anim.GetBool("running") == false)
+            {
+                Attacking();
+            }
+        }
+    }
+
+    
 
     IEnumerator AttackRoutine()
     {
@@ -187,7 +260,7 @@ public class PlayerMovement : MonoBehaviour
     void Attacking()
     {
         StartCoroutine(AttackRoutine());
-        
+
     }
 
     void fireProjectile()
@@ -200,7 +273,7 @@ public class PlayerMovement : MonoBehaviour
         bullet.transform.position = this.transform.position + new Vector3(0f, 0.4f, 0f);
         bullet.transform.rotation = this.transform.rotation;
         // aplies a force, in the direction of the player, to the bullet rigidbody (Unity API)
-        bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 20f);
+        bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 30f);
        
 
     }
@@ -216,7 +289,6 @@ public class PlayerMovement : MonoBehaviour
         bomb.transform.rotation = this.transform.rotation;
         // aplies a force, in the direction of the player, to the bomb rigidbody (Unity API)
         bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * 20f);
-        
 
     }
     
@@ -295,8 +367,3 @@ public class PlayerMovement : MonoBehaviour
     
 }
     
-    
-
-
-
-// TODO: player jump
