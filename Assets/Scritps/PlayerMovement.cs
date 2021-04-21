@@ -242,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetBool("attacking", true);
         anim.SetInteger("condition", 2);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
         if (_bombPower)
         {
             fireBomb();
@@ -270,7 +270,7 @@ public class PlayerMovement : MonoBehaviour
         //GameObject bullet = Instantiate(projectilePrefab, transform.position + new Vector3(0f,0.7f,0f));
         GameObject bullet = Instantiate(projectilePrefab) as GameObject;
         //places the bullet in player position.
-        bullet.transform.position = this.transform.position + new Vector3(0f, 0.4f, 0f);
+        bullet.transform.position = this.transform.position + new Vector3(0f, 1f, 0f);
         bullet.transform.rotation = this.transform.rotation;
         // aplies a force, in the direction of the player, to the bullet rigidbody (Unity API)
         bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 30f);
