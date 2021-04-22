@@ -23,7 +23,7 @@ public class Enemy1 : MonoBehaviour
     void Start()
 
     {
-        anim = anim.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         // search for the SpawnManager
         SpawnManagerReference = GameObject.FindWithTag("SpawnManager");
         // search for the PlayerView
@@ -52,24 +52,26 @@ public class Enemy1 : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
         
             direction.Normalize();
-            towardsPlayer = direction;
+            // towardsPlayer = direction;
             //Enemy1 moves towards the player
             // moveEnemy(towardsPlayer);
             // not all Enemy1 instances travel at the same speed. They travel at a speed ranging from 3  to 8
             // _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
-            if (anim.GetInteger("condition") == 1)
+            if (anim.GetBool("spawn") == true)
             {
+                Debug.Log("condition 1 is ON");
+                // moveEnemy(towardsPlayer);
                 _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
             }
         }
 
     }
 
-    void moveEnemy(Vector3 direction)
-    {
-        // not all Enemy1 instances travel at the same speed. They travel at a speed ranging from 3  to 8
-        _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
-    }
+    // void moveEnemy(Vector3 direction)
+    // {
+    //     // not all Enemy1 instances travel at the same speed. They travel at a speed ranging from 3  to 8
+    //     _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
+    // }
 
     IEnumerator ChaseRoutine()
     {
@@ -77,8 +79,8 @@ public class Enemy1 : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Debug.Log("condition 0 is ON");
         anim.SetInteger("condition",1);
-        Debug.Log("condition 1 is ON");
-        // anim.SetBool("spawn", true);
+        // Debug.Log("condition 1 is ON");
+        anim.SetBool("spawn", true);
         
     }
 
