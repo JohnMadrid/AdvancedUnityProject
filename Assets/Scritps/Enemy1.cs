@@ -17,11 +17,13 @@ public class Enemy1 : MonoBehaviour
     private Rigidbody _enemyRigidB;
 
     private Vector3 towardsPlayer;
+    Animator anim;
    
     
     void Start()
 
     {
+        anim = anim.GetComponent<Animator>();
         // search for the SpawnManager
         SpawnManagerReference = GameObject.FindWithTag("SpawnManager");
         // search for the PlayerView
@@ -30,11 +32,14 @@ public class Enemy1 : MonoBehaviour
         
         _enemyRigidB = this.GetComponent<Rigidbody>();
         transform.position= PlayerView.transform.position +   new Vector3(10f,1.6f,10f);
+        StartCoroutine(ChaseRoutine());
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (!(null == PlayerView))
         {
             //where the player is
@@ -45,11 +50,17 @@ public class Enemy1 : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = rotation;
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
-       
+        
             direction.Normalize();
             towardsPlayer = direction;
             //Enemy1 moves towards the player
-            moveEnemy(towardsPlayer);
+            // moveEnemy(towardsPlayer);
+            // not all Enemy1 instances travel at the same speed. They travel at a speed ranging from 3  to 8
+            // _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
+            if (anim.GetInteger("condition") == 1)
+            {
+                _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
+            }
         }
 
     }
@@ -58,6 +69,17 @@ public class Enemy1 : MonoBehaviour
     {
         // not all Enemy1 instances travel at the same speed. They travel at a speed ranging from 3  to 8
         _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
+    }
+
+    IEnumerator ChaseRoutine()
+    {
+        anim.SetInteger("condition", 0);
+        yield return new WaitForSeconds(5f);
+        Debug.Log("condition 0 is ON");
+        anim.SetInteger("condition",1);
+        Debug.Log("condition 1 is ON");
+        // anim.SetBool("spawn", true);
+        
     }
 
     public void Destroy()
