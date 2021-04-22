@@ -29,7 +29,7 @@ public class Enemy1 : MonoBehaviour
         
         
         _enemyRigidB = this.GetComponent<Rigidbody>();
-        transform.position= PlayerView.transform.position +   new Vector3(10f,0f,10f);
+        transform.position= PlayerView.transform.position +   new Vector3(10f,1.6f,10f);
     }
 
     // Update is called once per frame
