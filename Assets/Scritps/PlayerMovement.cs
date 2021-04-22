@@ -322,13 +322,31 @@ public class PlayerMovement : MonoBehaviour
 
         // player death
         if (_lives == 0)
-            
         {
-            //stop the spawning of  Enemy1
-            SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
-            
-            Destroy(gameObject);
+            anim.SetInteger("condition", 3);
+            StartCoroutine(DestroyRoutine());
         }
+        
+        IEnumerator DestroyRoutine()
+        {
+            yield return new WaitForSeconds(3.2f);
+            Destroy(gameObject);
+            SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
+        }
+            
+            
+        // {
+        //     //stop the spawning of  Enemy1
+        //     anim.SetInteger("condition", 3);
+        //     // anim.SetBool("dead", true);
+        //     
+        // }
+        // if (anim.GetBool("dead"))
+        // {
+        //     // WaitForSeconds(2);
+        //     // Destroy(gameObject);
+        //     SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
+        // }
 
 
     }
