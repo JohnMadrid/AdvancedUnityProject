@@ -951,7 +951,7 @@ Animator:
   m_GameObject: {fileID: 3315010527240274296}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8e48c4258692d4dd2abc8c853d5b3892, type: 3}
-  m_Controller: {fileID: 9100000, guid: 602d6748008614850b4c9a3526015ed7, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1010,11 +1010,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 3315010527240274296}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.66
   m_Height: 2.03
   m_Direction: 1
-  m_Center: {x: 0, y: 0.95, z: 0.3}
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!114 &588851421321897798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,10 +1053,10 @@ BoxCollider:
   m_GameObject: {fileID: 3315010527240274296}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.18}
-  m_Center: {x: 0, y: 1.24, z: 0.24}
+  m_Center: {x: 0, y: 1.24, z: 0}
 --- !u!1 &3482777937410264004
 GameObject:
   m_ObjectHideFlags: 0
