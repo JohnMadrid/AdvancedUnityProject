@@ -87,7 +87,8 @@ public class Enemy1 : MonoBehaviour
         _EnemyDead = true;
         anim.SetInteger("condition", 3);
         Debug.Log("Condition 3 For 3 seconds");
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(3.5f);
+        Destroy(this.gameObject);
 
     }
 

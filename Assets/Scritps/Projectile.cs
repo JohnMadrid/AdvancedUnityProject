@@ -6,8 +6,7 @@ public class Projectile : MonoBehaviour
 {
     
     [SerializeField] private float _shootingSpeed= 10f;
-    
-    
+
     void OnTriggerEnter(Collider other)
     {  // if the projectile collides with the enemy1
         //Debug.Log(other.name);
@@ -20,10 +19,11 @@ public class Projectile : MonoBehaviour
             // inspect tab of the Player object, the cube.
             //other.GetComponent<Player>().Damage();
             
-            // Destroy(gameObject);
             other.GetComponent<Enemy1>().EnemyDiesEffect();
             Debug.Log("Enemy DYING Effect ON");
-            Destroy(other);
+            Destroy(gameObject);
+
+            // Destroy(other);
         }
         // projectile destroys when hits walls and other objects
         else if (other.CompareTag("Walls") | other.CompareTag("BombPower") | other.CompareTag("BoxObstacle"))

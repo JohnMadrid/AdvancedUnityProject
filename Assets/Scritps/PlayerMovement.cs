@@ -162,61 +162,10 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(moveDirection.normalized * (_speed * Time.deltaTime));
 
         }
-
-
-
-
-        // //shoot with left button mouse
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     if (_bombPower)
-        //     {
-        //         //fire bombs
-        //         fireBomb();
-        //     }
-        //     else
-        //     {
-        //         //fire  projectiles
-        //        
-        //         fireProjectile();
-        //     }
-        //
-        //
-        // }
+        
     }
 
-    // void PlayerMoving()
-    // {
-    //     if (Input.GetKey(KeyCode.W))
-    //     {
-    //         if (anim.GetBool("attacking") == true)
-    //         {
-    //             return;
-    //         }
-    //         else if (anim.GetBool("attacking") == false)
-    //         {
-    //             anim.SetBool("running", true);
-    //             anim.SetInteger("condition", 1);
-    //             moveDir = new Vector3(0, 0, 1);
-    //             moveDir *= _speed;
-    //             moveDir = transform.TransformDirection((moveDirection));
-    //         }
-    //
-    //         if (Input.GetKeyUp(KeyCode.W))
-    //         {
-    //             anim.SetBool("running", false);
-    //             anim.SetInteger("condition", 0);
-    //             moveDir = new Vector3(0, 0, 0);
-    //         }
-    //     }
-    //
-    //     rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-    //     transform.eulerAngles = new Vector3(0, rot, 0);
-    //
-    //     moveDir.y -= gravity * Time.deltaTime;
-    //     controller.Move(moveDir * Time.deltaTime);
-    //
-    // }
+  
 
     void GetInput()
     {
@@ -276,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
         //GameObject bullet = Instantiate(projectilePrefab, transform.position + new Vector3(0f,0.7f,0f));
         GameObject bullet = Instantiate(projectilePrefab) as GameObject;
         //places the bullet in player position.
-        bullet.transform.position = this.transform.position + new Vector3(0f, 1f, 0f);
+        bullet.transform.position = this.transform.position + new Vector3(0f, 1.5f, 0f);
         bullet.transform.rotation = this.transform.rotation;
         // applies a force, in the direction of the player, to the bullet rigidbody (Unity API)
         bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 30f);
@@ -347,20 +296,7 @@ public class PlayerMovement : MonoBehaviour
             // Destroy all other enemies
             GameObject.FindWithTag("SpawnManager").GetComponent<SpawnManager>().DestroyAllEnemies();
         }
-            
-            
-        // {
-        //     //stop the spawning of  Enemy1
-        //     anim.SetInteger("condition", 3);
-        //     // anim.SetBool("dead", true);
-        //     
-        // }
-        // if (anim.GetBool("dead"))
-        // {
-        //     // WaitForSeconds(2);
-        //     // Destroy(gameObject);
-        //     SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
-        // }
+        
 
 
     }
