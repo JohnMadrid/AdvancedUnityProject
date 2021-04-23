@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _playerOnGround = true;
 
      
-    public int _lives = 3;
+    public int _lives = 5;
     
     
     // keep track of direction
@@ -316,6 +316,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // reduce lives by 1
             _lives -= 1;
+            
             Debug.Log("1 life reduced");
         }
       
@@ -323,15 +324,21 @@ public class PlayerMovement : MonoBehaviour
         // player death
         if (_lives == 0)
         {
-            anim.SetInteger("condition", 3);
+            Debug.Log("player is dying");
+            SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
             StartCoroutine(DestroyRoutine());
         }
         
         IEnumerator DestroyRoutine()
         {
-            yield return new WaitForSeconds(3.2f);
+            Debug.Log("Player's destroy routine called");
+            anim.SetInteger("condition", 3);
+            yield return new WaitForSeconds(4.2f);
+            Debug.Log("Now destroy player");
             Destroy(gameObject);
-            SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
+
+            // Destroy all other enemies
+            GameObject.FindWithTag("SpawnManager").GetComponent<SpawnManager>().DestroyAllEnemies();
         }
             
             
