@@ -19,6 +19,7 @@ public class Enemy1 : MonoBehaviour
 
     private Vector3 towardsPlayer;
     Animator anim;
+    private bool _EnemyDead = false;
    
     
     void Start()
@@ -60,7 +61,7 @@ public class Enemy1 : MonoBehaviour
         
             direction.Normalize();
            
-            if (anim.GetInteger("condition") == 1)
+            if (anim.GetBool("spawn") == true && _EnemyDead == false)
             {
                 _enemyRigidB.MovePosition(transform.position + (direction * Random.Range(3.0f, 8.0f) * Time.deltaTime));
             }
@@ -72,11 +73,28 @@ public class Enemy1 : MonoBehaviour
     IEnumerator ChaseRoutine()
     {
         anim.SetInteger("condition", 0);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         // Debug.Log("condition 0 is ON");
-        anim.SetInteger("condition",1);
+        anim.SetInteger("condition",2);
         // Debug.Log("condition 1 is ON");
-        // anim.SetBool("spawn", true);
+        yield return new WaitForSeconds(2.5f);
+        anim.SetInteger("condition", 1);
+        anim.SetBool("spawn", true);
+    }
+
+    IEnumerator EnemyDyingRoutine()
+    {
+        _EnemyDead = true;
+        anim.SetInteger("condition", 3);
+        Debug.Log("Condition 3 For 3 seconds");
+        yield return new WaitForSeconds(10f);
+
+    }
+
+    public void EnemyDiesEffect()
+    {
+        Debug.Log("BEFORE Coroutine");
+        StartCoroutine(EnemyDyingRoutine());
     }
 
     public void Destroy()

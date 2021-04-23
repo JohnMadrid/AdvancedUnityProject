@@ -20,7 +20,9 @@ public class Projectile : MonoBehaviour
             // inspect tab of the Player object, the cube.
             //other.GetComponent<Player>().Damage();
             
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            other.GetComponent<Enemy1>().EnemyDiesEffect();
+            Debug.Log("Enemy DYING Effect ON");
             Destroy(other);
         }
         // projectile destroys when hits walls and other objects
@@ -30,17 +32,7 @@ public class Projectile : MonoBehaviour
         }
         
         
-        //if the vaccine and the virus collide 
-        // else if (other.CompareTag("Vaccine"))
-        // {
-        //     if (!other.name.Contains("VLight"))
-        //     {
-        //         Destroy(other.gameObject);
-        //     }
-        //    
-        //     Destroy(this.gameObject);
-        //
-        // }
+       
         
     }
     

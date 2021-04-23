@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d4419aadcf7f5494dadabd21157c95f4
+guid: 3a80ca216bc674157a462cdf6d80a285
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Mutant Idle
+    second: Standing React Death Backward
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mutant Idle
+      name: Standing React Death Backward
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 127
+      lastFrame: 87
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -63,7 +63,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
