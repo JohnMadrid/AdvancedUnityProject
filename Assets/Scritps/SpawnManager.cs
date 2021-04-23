@@ -42,15 +42,12 @@ public class SpawnManager : MonoBehaviour
     private IEnumerator waitAndSpawnEnemy1()
     {
         while (_spawningEnemy1ON)
-
         {
             yield return new WaitForSeconds(Random.Range(6.0f, 15.0f));
-            if (!(null == PlayerView))
+            if (_spawningEnemy1ON)
             {
                 GameObject enemy1Clone = Instantiate(enemy1Prefab) as GameObject;
-                //Instantiate(enemy1Prefab);
             }
-
         }
     }
 
@@ -67,7 +64,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i <= howManyObjects; i++)
         {
-            var position1 = new Vector3(Random.Range(0f, 25f), 0f, Random.Range(0f, 25f));
+            var position1 = new Vector3(Random.Range(0, 25f), 0f, Random.Range(0, 25f));
             Instantiate(prefabObject, position1, Quaternion.identity );
         }
     }

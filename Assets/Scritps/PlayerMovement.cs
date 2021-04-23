@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     
     // animation
     Animator anim;
+    private GameObject spanM;
 
     // float rot = 0f;
     // Vector3 moveDir = Vector3.zero;
@@ -97,6 +98,11 @@ public class PlayerMovement : MonoBehaviour
     // player movement
     void PlayerMoves()
     {
+        if (anim.GetBool("dead"))
+        {
+            return;
+        }
+        
         // read player inputs on both x and y axis
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -272,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
         //places the bullet in player position.
         bullet.transform.position = this.transform.position + new Vector3(0f, 1f, 0f);
         bullet.transform.rotation = this.transform.rotation;
-        // aplies a force, in the direction of the player, to the bullet rigidbody (Unity API)
+        // applies a force, in the direction of the player, to the bullet rigidbody (Unity API)
         bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 30f);
        
 
@@ -325,6 +331,7 @@ public class PlayerMovement : MonoBehaviour
         if (_lives == 0)
         {
             Debug.Log("player is dying");
+            anim.SetBool("dead", true);
             SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
             StartCoroutine(DestroyRoutine());
         }

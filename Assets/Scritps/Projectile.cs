@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {  // if the projectile collides with the enemy1
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
         if(other.CompareTag("Enemy1")) 
         {
             //we still need to implement the health of the Player. 
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
             Destroy(other);
         }
         // projectile destroys when hits walls and other objects
-        else if (other.CompareTag("Walls") | other.CompareTag("BombPower") | other.CompareTag("BoxObstable"))
+        else if (other.CompareTag("Walls") | other.CompareTag("BombPower") | other.CompareTag("BoxObstacle"))
         {
             Destroy(gameObject);
         }

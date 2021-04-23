@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy1 : MonoBehaviour
 {
     
     // create reference to the SpawnManager so that I can grab its DestroyEnemy method.
-    public static GameObject SpawnManagerReference;
+    //public static GameObject SpawnManagerReference;
     //used to grab the PlayerView from the scene 
     public static GameObject PlayerView;
     
@@ -25,20 +26,33 @@ public class Enemy1 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         // search for the SpawnManager
-        SpawnManagerReference = GameObject.FindWithTag("SpawnManager");
+        //SpawnManagerReference = GameObject.FindWithTag("SpawnManager");
         // search for the PlayerView
         PlayerView = GameObject.FindWithTag("Player");
         
-        
         _enemyRigidB = this.GetComponent<Rigidbody>();
-        transform.position= PlayerView.transform.position +  new Vector3(10f,1.6f,10f);
+        Vector3 randomizedPosition = new Vector3(Random.Range(8f, 15f), 0.2f, Random.Range(8f, 15f));
+        transform.position = PlayerView.transform.position + randomizedPosition;
+        Debug.Log("New enemy spawned at relative position ("+randomizedPosition.x+","+randomizedPosition.z+") to PlayerView");
         StartCoroutine(ChaseRoutine());
 
     }
-
+    private void Reset()
+    {
+        if (gameObject.GetComponent<CapsuleCollider>() == null)
+        {
+            Debug.Log("Enemy1 has no collider and must DIEEEEE");
+            CapsuleCollider capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.GetComponent<CapsuleCollider>() == null)
+        {
+            Destroy(gameObject);
+        }
 
         if (!(null == PlayerView))
         {
@@ -66,7 +80,7 @@ public class Enemy1 : MonoBehaviour
     {
         anim.SetInteger("condition", 0);
         yield return new WaitForSeconds(5f);
-        Debug.Log("condition 0 is ON");
+        // Debug.Log("condition 0 is ON");
         anim.SetInteger("condition",1);
         // Debug.Log("condition 1 is ON");
         // anim.SetBool("spawn", true);
