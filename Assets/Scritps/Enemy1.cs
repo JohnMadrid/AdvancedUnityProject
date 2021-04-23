@@ -37,20 +37,13 @@ public class Enemy1 : MonoBehaviour
         StartCoroutine(ChaseRoutine());
 
     }
-    private void Reset()
-    {
-        if (gameObject.GetComponent<CapsuleCollider>() == null)
-        {
-            Debug.Log("Enemy1 has no collider and must DIEEEEE");
-            CapsuleCollider capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
-        }
-    }
     
     // Update is called once per frame
     void Update()
     {
         if (gameObject.GetComponent<CapsuleCollider>() == null)
         {
+            Debug.Log("Enemy1 has no collider and must DIEEEEE");
             Destroy(gameObject);
         }
 
