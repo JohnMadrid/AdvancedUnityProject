@@ -78,8 +78,11 @@ public class Enemy1 : MonoBehaviour
         anim.SetInteger("condition",2);
         // Debug.Log("condition 1 is ON");
         yield return new WaitForSeconds(2.5f);
-        anim.SetInteger("condition", 1);
-        anim.SetBool("spawn", true);
+        if (!(_EnemyDead))
+        {
+            anim.SetInteger("condition", 1);
+            anim.SetBool("spawn", true);
+        }
     }
 
     IEnumerator EnemyDyingRoutine()
