@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject _speedHelpPrefab;
     [SerializeField] private GameObject _oneLifePrefab;
     [SerializeField] private GameObject _bombPowerPrefab;
+    [SerializeField] private GameObject _shieldPrefab;
     
     
     // we want to make this false when the Player is destroyed so that the spawning of the virus stops. 
@@ -33,7 +34,10 @@ public class SpawnManager : MonoBehaviour
         PlaceObjects(_speedHelpPrefab, 2);
         
         //place some _oneLifePrefab throughout the maze
-        PlaceObjects(_oneLifePrefab, 2);
+        PlaceObjects(_oneLifePrefab, 3);
+        
+        //place some shields around the maze
+        PlaceObjects(_shieldPrefab, 3);
         
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
@@ -64,7 +68,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i <= howManyObjects; i++)
         {
-            var position1 = new Vector3(Random.Range(0, 25f), 0f, Random.Range(0, 25f));
+            var position1 = new Vector3(Random.Range(0, 25f), -1.06f, Random.Range(0, 25f));
             Instantiate(prefabObject, position1, Quaternion.identity );
         }
     }
