@@ -83,13 +83,13 @@ public class SpawnManager : MonoBehaviour
         GameObject prefab_door=Instantiate(doorPrefab, position_door, Quaternion.Euler(-1.764f,-85.179f,-0.138f));
         prefab_door.transform.localScale= new Vector3(1.43771684f,1.2507f,1) ;
         
-        var position_door_2 = new Vector3(-2.34f,-1.48f,-10.05f);
-        GameObject prefab_door_2=Instantiate(doorPrefab, position_door_2, Quaternion.Euler(-1.764f,-85.179f,-0.138f));
-        prefab_door_2.transform.localScale= new Vector3(1.496409f,1.261857f,1);
+        var position_door_2 = new Vector3(0.51f,-0.77f,-13.31f);
+        GameObject prefab_door_2=Instantiate(doorPrefab, position_door_2, Quaternion.Euler(1f,-0.89f,-0.181f));
+        prefab_door_2.transform.localScale= new Vector3(1.496409f,1.11842f,4.8f);
         
-        var position_door_3 = new Vector3(10.55f,-0.63f,-2.58f);
+        var position_door_3 = new Vector3(11.7f,-0.63f,-2.58f);
         GameObject prefab_door_3=Instantiate(doorPrefab, position_door_3, Quaternion.Euler(-1.764f,-85.179f,-0.138f));
-        prefab_door_3.transform.localScale= new Vector3(1.4964409f,1.08769f,1);
+        prefab_door_3.transform.localScale= new Vector3(1.4964409f,1.08769f,4.8f);
         
     }
 }
