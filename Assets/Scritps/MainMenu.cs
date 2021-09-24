@@ -10,4 +10,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void Quit()
+    {
+        Debug.Log("quit button was clicked");
+        Application.Quit();
+    }
 }
