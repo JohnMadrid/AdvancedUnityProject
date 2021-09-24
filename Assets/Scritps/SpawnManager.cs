@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -44,7 +46,12 @@ public class SpawnManager : MonoBehaviour
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
     }
-    
+
+    void Update()
+    {
+        PauseResume();
+    }
+
     private IEnumerator waitAndSpawnEnemy1()
     {
         while (_spawningEnemy1ON)
@@ -92,6 +99,19 @@ public class SpawnManager : MonoBehaviour
         var position_door_3 = new Vector3(11.8400002f,-0.415545702f,-2.67000008f);
         GameObject prefab_door_3=Instantiate(doorPrefab, position_door_3, Quaternion.Euler(358.063354f,269.079468f,359.320801f));
         prefab_door_3.transform.localScale= new Vector3(1.39439583f,1.08769f,4.80000019f);
+        
+    }
+
+    void PauseResume()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale = 1;
+        }
         
     }
 }
