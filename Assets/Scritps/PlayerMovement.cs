@@ -271,6 +271,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // reduce lives by 1
             _lives -= 1;
+            // LivesCount.LivesValue -= 1;
             
             Debug.Log("1 life reduced");
         }
