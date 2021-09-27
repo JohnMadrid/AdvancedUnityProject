@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _coinLocationPrefab;
     [SerializeField] private GameObject _speedHelpPrefab;
     [SerializeField] private GameObject _oneLifePrefab;
     [SerializeField] private GameObject _bombPowerPrefab;
@@ -42,6 +43,8 @@ public class SpawnManager : MonoBehaviour
         //place some shields around the maze
         PlaceObjects(_shieldPrefab, 3);
         PlaceDoors(_door);
+
+        PlaceCoins(_coinLocationPrefab);
         
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
@@ -112,6 +115,33 @@ public class SpawnManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+        
+    }
+   
+
+    void PlaceCoins(GameObject coin_prefab)
+    {
+   
+        List<Tuple<float, float, float>> positionList = new List<Tuple<float, float, float>>()
+        {
+            Tuple.Create(-3.41000009f,-0.994000018f,40.0200005f),
+            Tuple.Create(-23.8299999f,-0.994000018f,33.8699989f),
+            Tuple.Create(-46.6800003f,-0.994000018f,33.9300003f),
+            Tuple.Create(-37.2299995f,-0.994000018f,56.6800003f),
+            Tuple.Create (-54.7000008f,-0.994000018f,73.3000031f),
+            Tuple.Create (-64.0400009f,-0.994000018f,73.1999969f),
+            Tuple.Create (-85f,-0.994000018f,111.900002f)
+          
+        };
+        
+        foreach (var item in positionList)
+        {
+            float x = item.Item1;
+            float y = item.Item2;
+            float z = item.Item3;
+            Instantiate(coin_prefab, new Vector3(x,y,z),Quaternion.Euler(0,0,0));
+        }
+        
         
     }
 }

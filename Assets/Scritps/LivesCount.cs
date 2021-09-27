@@ -8,17 +8,17 @@ using UnityEngine.UI;
 
 public class LivesCount : MonoBehaviour
 {
+    // for Lives text increase
     [SerializeField] public GameObject player_movement;
     public Image LivesIconColor;
-    private TextMeshProUGUI TextmesH;
+    private TextMeshProUGUI TextLivesCount;
     private int livesValue;
-
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        TextmesH = gameObject.GetComponent<TextMeshProUGUI>();
+        TextLivesCount = gameObject.GetComponent<TextMeshProUGUI>();
         livesValue = player_movement.GetComponent<PlayerMovement>()._lives;
         
     }
@@ -29,7 +29,7 @@ public class LivesCount : MonoBehaviour
         livesValue = player_movement.GetComponent<PlayerMovement>()._lives;
         
         // set lives values as new text
-        TextmesH.text = livesValue.ToString();
+        TextLivesCount.text = livesValue.ToString();
         
         // change colors
         ChangeLivesIconColor();
