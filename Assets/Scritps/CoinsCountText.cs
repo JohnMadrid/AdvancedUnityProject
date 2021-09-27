@@ -26,5 +26,17 @@ public class CoinsCountText : MonoBehaviour
         CoinsTotal = playerMovementScript.GetComponent<PlayerMovement>()._coinRewards;
         // rewrite total coins when collected
         TextCoinsCount.text = CoinsTotal.ToString();
+        GainedLives();
+    }
+
+    void GainedLives()
+    {
+        if (playerMovementScript.GetComponent<PlayerMovement>()._coinRewards == 5)
+        { 
+            // increase lives by one 
+            playerMovementScript.GetComponent<PlayerMovement>()._lives += 1;
+            
+        }
+        
     }
 }
