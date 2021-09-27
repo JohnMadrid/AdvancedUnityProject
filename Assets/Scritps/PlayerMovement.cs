@@ -6,9 +6,9 @@ using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngineInternal;
 
 
+
 public class PlayerMovement : MonoBehaviour
 {
-    
     //shield
     [SerializeField] private GameObject PlayerShield;
     
@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
      
     public int _lives = 3;
+
+    public int _coinRewards = 0;
     
     
     // keep track of direction

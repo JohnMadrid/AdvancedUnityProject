@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CoinReward : MonoBehaviour
 {
+    //[SerializeField] public GameObject coinRewardCount;
+    //private int coinsValue;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +21,13 @@ public class CoinReward : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // if the player collides with coin
-        //Debug.Log(other.name);
+        
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player collider with the coin");
-
+            // Increase the coins count
+            other.GetComponent<PlayerMovement>()._coinRewards += 1;
+            //call a function to update textMeschPro coins total
+            
             Destroy(gameObject);
 
         }

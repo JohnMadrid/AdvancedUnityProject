@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
             //other.GetComponent<Player>().Damage();
             
             other.GetComponent<Enemy1>().EnemyDiesEffect();
-            Debug.Log("Enemy DYING Effect ON");
+            //Debug.Log("Enemy DYING Effect ON");
             Destroy(gameObject);
 
             // Destroy(other);
