@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _playerOnGround = true;
 
      
-    public int _lives = 5;
+    public int _lives = 3;
     
     
     // keep track of direction
