@@ -25,8 +25,7 @@ public class CoinReward : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Increase the coins count
-            other.GetComponent<PlayerMovement>()._coinRewards += 1;
-            //call a function to update textMeschPro coins total
+            other.GetComponent<PlayerMovement>()._coinRewards += Random.Range(1,12);
             
             Destroy(gameObject);
 
