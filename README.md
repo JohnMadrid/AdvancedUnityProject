@@ -37,3 +37,24 @@ them in order to reduce the file size and be able to increase Unity performance.
 
 <h2>References</h2>
 <p> Our code is mainly based on the Unity API as well as the code from the course videos. </p>
+<h3> Asset Store</h3>
+<p> We have used several assets packages from the Unity Assets Store. Below you can find a list of the Asset packages used for the project.</p>
+<ul> 
+  <li><a href="https://assetstore.unity.com/packages/3d/props/weapons/ammo-crate-wood-ammunition-box-90071">Ammo Crate Wood Ammunition Box</a></li>
+  
+  <li> <a href= "https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-free-pack-169179">Cartoon FX Free Pack</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076">Conifers [BOTD]</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/environments/sci-fi/energy-cells-free-166830">Energy Cells Free</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/props/interior/futuristic-security-door-182385">Futuristic Security Door</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/2d/textures-materials/nature/grass-and-flowers-pack-1-17100">Grass And Flowers Pack 1</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/environments/landscapes/grassy-valley-terrains-60497">Grassy Valley Terrain</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/props/weapons/grenade-pack-free-83440">Grenade pack free</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/environments/landscapes/mountain-terrain-rock-tree-97905">Mountain Terrain + Rock + Tree</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/2d/textures-materials/floors/outdoor-ground-textures-12555">Outdoor Ground Textures</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/props/potions-coin-and-box-of-pandora-pack-71778">Potions, Coin And Box of Pandora Pack</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/environments/landscapes/realistic-terrain-collection-lite-47726">Realistic Terrain Collection LITE</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/environments/landscapes/realistic-terrain-collection-lite-47726">Responsive Energy Shield</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/props/clothing/armor/skull-shield-76967">skull shield</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/2d/gui/icons/clean-vector-icons-132084">Clean Vector Icons</a></li>
+  
+</ul>
