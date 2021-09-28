@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     // speed and shield Icons on the screen menu
     public Image SpeedIconColor;
     public Image ShieldIconColor;
+    public Image GrenadeIconColor;
     
     //shield
     [SerializeField] private GameObject PlayerShield;
@@ -255,7 +256,8 @@ public class PlayerMovement : MonoBehaviour
     {   
         // when the player stumbles with BombPower this  function is called and starts the Coroutine
         _bombPower = true;
-        Debug.Log("Player collided with the BombPower");
+        GrenadeIconColor.color = new Color32(135, 140, 92,255);
+        // Debug.Log("Player collided with the BombPower");
         StartCoroutine(DeactivateBomb());
     }
 
@@ -263,6 +265,7 @@ public class PlayerMovement : MonoBehaviour
     { 
         yield return new WaitForSeconds(_bombTimeout);
         _bombPower = false;
+        GrenadeIconColor.color = new Color32(130,146,67,128);
     }
     
     // Player Damage
@@ -304,11 +307,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ActivateSpeed()
     {
-        //_speedPowerON = true;
-        //if (_speedPowerON == true)
-        //{
-            
-        //}
         SpeedIconColor.color = new Color32(1,94, 255, 255);
         _speed = 20f;
         StartCoroutine(DeactivateSpeed());
