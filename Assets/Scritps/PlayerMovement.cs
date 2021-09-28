@@ -265,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
     { 
         yield return new WaitForSeconds(_bombTimeout);
         _bombPower = false;
-        GrenadeIconColor.color = new Color32(130,146,67,128);
+        GrenadeIconColor.color = new Color32(130,146,67,100);
     }
     
     // Player Damage
@@ -276,7 +276,6 @@ public class PlayerMovement : MonoBehaviour
         {
             // reduce lives by 1
             _lives -= 1;
-
         }
       
 
@@ -315,7 +314,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator DeactivateSpeed()
     { 
         yield return new WaitForSeconds(_speedHelpTimeout);
-        SpeedIconColor.color = new Color32(57,170, 236, 128);
+        SpeedIconColor.color = new Color32(57,170, 236, 100);
         _speed = 6f;
         
     }
@@ -327,7 +326,6 @@ public class PlayerMovement : MonoBehaviour
         _shieldPowerON = true;
         PlayerShield.SetActive(true);
         ShieldIconColor.color = new Color32(255, 97, 0,255);
-        //Debug.Log("the shieldPower has been activated");
         StartCoroutine(DeactivateShieldPower());
     }
     
@@ -335,10 +333,9 @@ public class PlayerMovement : MonoBehaviour
     {
         
         yield return new WaitForSeconds(_shieldPowerTimeout);
-        ShieldIconColor.color = new Color32(224, 108, 37,128);
+        ShieldIconColor.color = new Color32(224, 108, 37,100);
         _shieldPowerON = false;
         PlayerShield.SetActive(false);
-        //Debug.Log("The shieldPower has been deactivated");
         
     }
     

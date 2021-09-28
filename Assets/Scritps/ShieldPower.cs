@@ -5,17 +5,9 @@ using UnityEngine;
 public class ShieldPower : MonoBehaviour
 {
     // Start is called before the first frame update
-    //Reference to the player
-    //public static GameObject PlayerViewReference;
-    
-    //referecne to playerView
-    //private Collider PlayerViewC;
-    
-    
-    
     void Start()
     {
-       //PlayerViewReference = GameObject.FindWithTag("Player");
+       
     }
 
     // Update is called once per frame
