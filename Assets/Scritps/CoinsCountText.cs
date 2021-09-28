@@ -46,7 +46,7 @@ public class CoinsCountText : MonoBehaviour
     {
         if (CoinsTotal == 0)
         {
-            CoinsIconColor.color = new Color32(178, 176, 93, 128);
+            CoinsIconColor.color = new Color32(178, 176, 93, 100);
         }
 
         else if (CoinsTotal >= 1 && CoinsTotal < 5)
