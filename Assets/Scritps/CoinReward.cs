@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class CoinReward : MonoBehaviour
 {
-    //[SerializeField] public GameObject coinRewardCount;
-    //private int coinsValue;
-    
+
     // Start is called before the first frame update
     void Start()
     {
