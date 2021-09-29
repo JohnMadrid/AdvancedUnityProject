@@ -1,11 +1,12 @@
-# IntroUnityProject
+# AdvacedUnityProject
 
 <h1>MazeWarrior</h1>
 <h3> by John Jairo Madrid Carvajal and Yesid Cano Castro </h3>
 
 <h3>Description</h3>
-<p>The aim of this game is to find the way out of a Maze. The player is immersed in a 3D environment. 
-Through its journey, the player encounters an Enemy that chases him all over the game. This Enemy spawns over time. </p>
+<p>In this repository we have created an entire 3D world with 360 degrees rotational camera and close-up functionality. This 3D environment was built to give a full-immersion illusion to the player, and it has a basic to medium complexity structure for a game with different menus, buttons, and internal rules. To achieve the immersion experience, we have used Cinemachine camera with a complex set up to obtain cleaner, smoother camera movements and avoid overlapping with objects; we added realistic objects and textures, an outdoor Skybox as well as fog to emphasize the feeling of depth.
+  
+The game consists of a maze, a player, weapons, and rewards as well as some enemies that inhabit the maze. The aim of this game is for the player to find the way out of it. Through its journey, the player encounters different weapons and rewards he needs to use to fight the enemies that chases him all over the maze. Both enemies and weapons spawn over time.</p>
 
 <h3>Lives:</h3>
 <p>The player starts with a total of 3 lives which are subtracted by 1</p>
