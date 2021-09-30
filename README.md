@@ -3,24 +3,47 @@
 <h1>MazeWarrior</h1>
 <h3> by John Jairo Madrid Carvajal and Yesid Cano Castro </h3>
 
-<h3>Description</h3>
+<h2>Description</h2>
 <p>In this repository we have created an entire 3D world with 360 degrees rotational camera and close-up functionality. This 3D environment was built to give a full-immersion illusion to the player, and it has a basic to medium complexity structure for a game with different menus, buttons, and internal rules. To achieve the immersion experience, we have used Cinemachine camera with a complex set up to obtain cleaner, smoother camera movements and avoid overlapping with objects; we added realistic objects and textures, an outdoor Skybox as well as fog to emphasize the feeling of depth.
   
-The game consists of a maze, a player, weapons, and rewards as well as some enemies that inhabit the maze. The aim of this game is for the player to find the way out of it. Through its journey, the player encounters different weapons and rewards he needs to use to fight the enemies that chases him all over the maze. Both enemies and weapons spawn over time.</p>
+The game consists of a maze, a player, weapons, and rewards as well as some enemies that inhabit the maze. The aim of this game is for the player to find the way out of it. Through its journey, the player encounters different weapons and rewards he needs to use to fight the enemies that chase him all over the maze. Both enemies and weapons spawn over time.</p>
 
-<h3>Lives:</h3>
-<p>The player starts with a total of 3 lives which are subtracted by 1</p>
+<div>
+<h2>Game Instructions</h2>
+<h4>Lives:</h4>
+<p><ul>
+  <li>The player starts with a total of 3 lives which are subtracted by 1.</li>
+  <li>The player gains one life once he has collected 20 coins.</li>
+  </ul>
 
-<h3>Weapons  </h3>
-<ul> <li> <strong>Projectile:</strong>  The player has an unlimited amount of projectiles that can kill the Enemy </li>
-<li><strong>Bomb: </strong> The Bomb can kill several Enemies at once, destroy BoxObstacles, and can also kill the Player herself if this is within its radius.</li>
+</p>
+
+<h4>Weapons  </h4>
+<ul> <li> <strong>Fireball spell:</strong>  The player has an unlimited amount of magic fireballs which can kill the Enemy. </li>
+<li><strong>Bomb: </strong> The Bomb can kill several Enemies at once, destroy the door obstacles, and can also kill the Player herself if this is within its radius.</li>
 </ul>
 
-<h3> Components: </h3>
-<ul> <li> <strong> Player </strong> </li>
-<li>  <strong>Enemy: </strong> This component was developed in Blender. </li>
-<li>  <strong>BoxObstacle </strong> </li>
-<li><strong>Maze:</strong> This component was enterily developed in Blender.  </li>
+<h4>Helps</h4>
+<ul>
+  <li><strong>Coins:</strong> There are several coins spread around the maze. These have been placed in some strategic places.</li>
+  <li><strong>Blood capsules:</strong> They are located in several parts of the maze. A capsule gives the player one life.</li>
+  <li><strong>Shield:</strong> These artifacts protect the player from the enemies by killing them. Its protection lasts for 5 seconds.</li>
+  <li><strong>Speed:</strong> These are beverages the player can use by stepping on them. They will make him walk faster. Its effect lasts 10 seconds.</li>
+  <li><strong>Ammunition box:</strong> Throughout the maze, the player can find ammunition boxes which give him an unlimited amount of bombs for 30 seconds.</li>
+  
+ </ul>
+</div>
+
+<h2> Components</h2>
+<ul>
+  <li>Main Menu.</li>
+  <li>Pause and Resume menu.</li>
+  <li>Game Board: There are 5 icons on the top right side of the screen which are updated at runtime when the player collects or activates a game help. </li>
+  
+<li> Player.</li>
+<li> Enemy.</li>
+<li>Doors.</li>
+<li>Maze:This component was enterily developed in Blender.  </li>
 </ul>
 
 <p>Using Blender was perhaps the most challenging part of this project. After many unsuccessful attempts to export our figures from Blender into Unity, we decided to only use part of 
@@ -39,7 +62,7 @@ them in order to reduce the file size and be able to increase Unity performance.
 <h2>References</h2>
 <p> Our code is mainly based on the Unity API as well as the code from the course videos. </p>
 <h3> Asset Store</h3>
-<p> We have used several assets packages from the Unity Assets Store. Below you can find a list of the Asset packages used for the project.</p>
+<p> We used several asset packages from the Unity Assets Store. Below you can find a list of the Asset packages used for the project.</p>
 <ul> 
   <li><a href="https://assetstore.unity.com/packages/3d/props/weapons/ammo-crate-wood-ammunition-box-90071">Ammo Crate Wood Ammunition Box</a></li>
   
