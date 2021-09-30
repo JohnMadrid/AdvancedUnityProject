@@ -109,6 +109,10 @@ public class Enemy1 : MonoBehaviour
     // Enemy takes lives from Player
     void OnTriggerEnter(Collider other) 
     {
+        if (other.CompareTag("PlayerView"))
+        {
+            Destroy(this.gameObject);
+        }
         if (other.CompareTag("Player"))
         {
             Debug.Log("Enemy hit player");

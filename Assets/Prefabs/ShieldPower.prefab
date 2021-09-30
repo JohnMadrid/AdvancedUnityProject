@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8359019467476372539}
   m_Layer: 0
   m_Name: ShieldPower
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8359019467476372485}
-  m_LocalRotation: {x: -0.032374136, y: -0.75220126, z: -0.01224533, w: 0.6580237}
+  m_LocalRotation: {x: -0.03237532, y: -0.75219864, z: -0.012246358, w: 0.65802675}
   m_LocalPosition: {x: 7.4, y: -1.016, z: 24.198}
   m_LocalScale: {x: 0.21839924, y: 0.2570976, z: 0.220465}
   m_Children: []

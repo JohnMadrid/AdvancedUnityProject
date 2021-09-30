@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 7347222894261512665}
   - component: {fileID: 7347222894737357353}
   - component: {fileID: 7347222894737357352}
+  - component: {fileID: 2421471537410360021}
   m_Layer: 0
   m_Name: Future_Door
   m_TagString: BoxObstacle
@@ -187,7 +188,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7347222894261614073}
-  m_LocalRotation: {x: -0.010517884, y: -0.676674, z: -0.011303625, w: 0.73612094}
+  m_LocalRotation: {x: -0.010517884, y: -0.67667395, z: -0.011303625, w: 0.7361209}
   m_LocalPosition: {x: -32.857, y: -1.5858, z: 35.036}
   m_LocalScale: {x: 1.496409, y: 1.2618567, z: 1}
   m_Children:
@@ -228,6 +229,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.48, y: 4.88, z: 0.35}
   m_Center: {x: 0, y: 2.6, z: 0}
+--- !u!114 &2421471537410360021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347222894261614073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8356fd12a63f64f8db463bb11edf90e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7347222894261614075
 GameObject:
   m_ObjectHideFlags: 0

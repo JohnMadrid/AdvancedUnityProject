@@ -306,17 +306,23 @@ public class PlayerMovement : MonoBehaviour
         _shieldPowerON = true;
         PlayerShield.SetActive(true);
         ShieldIconColor.color = new Color32(255, 97, 0,255);
+        
         StartCoroutine(DeactivateShieldPower());
     }
     
     IEnumerator DeactivateShieldPower()
     {
-        
         yield return new WaitForSeconds(_shieldPowerTimeout);
         ShieldIconColor.color = new Color32(224, 108, 37,100);
         _shieldPowerON = false;
         PlayerShield.SetActive(false);
         
+    }
+
+    public void DeactivateShieldOnDoor()
+    {
+        PlayerShield.SetActive(false);
+        _shieldPowerON = false;
     }
     
     
