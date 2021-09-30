@@ -108,7 +108,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void PauseResume()
+    public void PauseResume()
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 1)
         {

@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         // shoots forward
-        transform.Translate(Vector3.forward  *_shootingSpeed  * Time.deltaTime);
+        transform.Translate(Vector3.forward * (_shootingSpeed * Time.deltaTime));
     }
     
     
