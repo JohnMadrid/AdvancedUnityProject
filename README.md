@@ -23,7 +23,7 @@ The game consists of a maze, a player, weapons, and rewards as well as some enem
 <li><strong>Bomb: </strong> The Bomb can kill several Enemies at once, destroy the door obstacles, and can also kill the Player herself if this is within its radius.</li>
 </ul>
 
-<h4>Helps</h4>
+<h4>Resources</h4>
 <ul>
   <li><strong>Coins:</strong> There are several coins spread around the maze. These have been placed in some strategic places.</li>
   <li><strong>Blood capsules:</strong> They are located in several parts of the maze. A capsule gives the player one life.</li>
@@ -38,7 +38,7 @@ The game consists of a maze, a player, weapons, and rewards as well as some enem
 <ul>
   <li>Main Menu.</li>
   <li>Pause and Resume menu.</li>
-  <li>Game Board: There are 5 icons on the top right side of the screen which are updated at runtime when the player collects or activates a game help. </li>
+  <li>Game Board: There are 5 icons on the top right side of the screen which are updated at runtime and displays the resources that the player has available. </li>
   
 <li> Player.</li>
 <li> Enemy.</li>
@@ -46,13 +46,6 @@ The game consists of a maze, a player, weapons, and rewards as well as some enem
 <li>Maze:This component was enterily developed in Blender.  </li>
 </ul>
 
-<p>Using Blender was perhaps the most challenging part of this project. After many unsuccessful attempts to export our figures from Blender into Unity, we decided to only use part of 
-them in order to reduce the file size and be able to increase Unity performance. As shown in the pictures below:</p>
-
-![alt text](https://github.com/JohnMadrid/IntroUnityProject/blob/main/Images_MazeW/MazeWarrior_BlenderVersion.png)
-
-
-![alt text](https://github.com/JohnMadrid/IntroUnityProject/blob/main/Images_MazeW/MazeWalls_Blender.png)
 
 <p>For more visual information of the process creating our game prototype, refer to the Images folder.</p>
 <p>For better communication in the development of our game we used GitKranken which helped us to have updated versions of the project along the process.</p>
@@ -78,7 +71,7 @@ them in order to reduce the file size and be able to increase Unity performance.
   <li> <a href= "https://assetstore.unity.com/packages/3d/props/potions-coin-and-box-of-pandora-pack-71778">Potions, Coin And Box of Pandora Pack</a></li>
   <li> <a href= "https://assetstore.unity.com/packages/3d/environments/landscapes/realistic-terrain-collection-lite-47726">Realistic Terrain Collection LITE</a></li>
   <li> <a href= "https://assetstore.unity.com/packages/3d/environments/landscapes/realistic-terrain-collection-lite-47726">Responsive Energy Shield</a></li>
-  <li> <a href= "https://assetstore.unity.com/packages/3d/props/clothing/armor/skull-shield-76967">skull shield</a></li>
+  <li> <a href= "https://assetstore.unity.com/packages/3d/props/clothing/armor/skull-shield-76967">Skull shield</a></li>
   <li> <a href= "https://assetstore.unity.com/packages/2d/gui/icons/clean-vector-icons-132084">Clean Vector Icons</a></li>
   
 </ul>
