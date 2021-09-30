@@ -311,12 +311,17 @@ public class PlayerMovement : MonoBehaviour
     
     IEnumerator DeactivateShieldPower()
     {
-        
         yield return new WaitForSeconds(_shieldPowerTimeout);
         ShieldIconColor.color = new Color32(224, 108, 37,100);
         _shieldPowerON = false;
         PlayerShield.SetActive(false);
         
+    }
+
+    public void DeactivateShieldOnDoor()
+    {
+        PlayerShield.SetActive(false);
+        _shieldPowerON = false;
     }
     
     

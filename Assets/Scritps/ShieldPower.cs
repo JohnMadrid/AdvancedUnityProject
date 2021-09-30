@@ -15,13 +15,10 @@ public class ShieldPower : MonoBehaviour
     {
         
     }
-    
-    
-    
+
     void OnTriggerEnter(Collider other)
     {
         // if the player collides with BombPower
-        Debug.Log(other.name);
         if (other.CompareTag("Player"))
         {
             
