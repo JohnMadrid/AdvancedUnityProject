@@ -23,9 +23,7 @@ public class ShieldPower : MonoBehaviour
         {
             
             other.GetComponent<PlayerMovement>().ActivateShieldPower();
-
             Destroy(gameObject);
-            
         }
     }
 }

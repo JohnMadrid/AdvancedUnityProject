@@ -306,6 +306,7 @@ public class PlayerMovement : MonoBehaviour
         _shieldPowerON = true;
         PlayerShield.SetActive(true);
         ShieldIconColor.color = new Color32(255, 97, 0,255);
+        
         StartCoroutine(DeactivateShieldPower());
     }
     
