@@ -50,7 +50,6 @@ The game consists of a maze, a player, weapons, and rewards as well as some enem
 <p>For more visual information of the process creating our game prototype, refer to the Images folder.</p>
 <p>For better communication in the development of our game we used GitKranken which helped us to have updated versions of the project along the process.</p>
 
-![alt text](https://github.com/JohnMadrid/IntroUnityProject/blob/main/Images_MazeW/GitKraken_usage.png)
 
 <h2>References</h2>
 <p> Our code is mainly based on the Unity API as well as the code from the course videos. </p>
