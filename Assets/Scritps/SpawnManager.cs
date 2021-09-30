@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject _shieldPrefab;
     [SerializeField] private GameObject _door;
     
+    public GameObject pausedCanvas;
     
     // we want to make this false when the Player is destroyed so that the spawning of the virus stops. 
     public bool _spawningEnemy1ON = true;
@@ -48,6 +50,7 @@ public class SpawnManager : MonoBehaviour
         
         coroutine = waitAndSpawnEnemy1();
         StartCoroutine(coroutine);
+        
     }
 
     void Update()
@@ -105,19 +108,21 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void PauseResume()
+    public void PauseResume()
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 1)
         {
             Time.timeScale = 0;
+            pausedCanvas.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
             Time.timeScale = 1;
+            pausedCanvas.SetActive(false);
         }
         
     }
-   
+
 
     void PlaceCoins(GameObject coin_prefab)
     {
