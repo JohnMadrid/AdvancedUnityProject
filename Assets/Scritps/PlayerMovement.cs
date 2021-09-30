@@ -228,10 +228,10 @@ public class PlayerMovement : MonoBehaviour
         //GameObject bullet = Instantiate(projectilePrefab, transform.position + new Vector3(0f,0.7f,0f));
         GameObject bullet = Instantiate(projectilePrefab) as GameObject;
         //places the bullet in player position.
-        bullet.transform.position = this.transform.position + new Vector3(0f, 1.5f, 0f);
+        bullet.transform.position = this.transform.position;
         bullet.transform.rotation = this.transform.rotation;
         // applies a force, in the direction of the player, to the bullet rigidbody (Unity API)
-        bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 30f);
+        bullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 80f);
        
 
     }
