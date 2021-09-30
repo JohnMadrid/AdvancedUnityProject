@@ -12,6 +12,7 @@ TagManager:
   - SpawnManager
   - Coin
   - Shield
+  - Goal
   layers:
   - Default
   - TransparentFX

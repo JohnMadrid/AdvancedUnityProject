@@ -21,7 +21,6 @@ public class ShieldPower : MonoBehaviour
         // if the player collides with BombPower
         if (other.CompareTag("Player"))
         {
-            
             other.GetComponent<PlayerMovement>().ActivateShieldPower();
             Destroy(gameObject);
         }

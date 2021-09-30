@@ -7,7 +7,7 @@ public class DoorCollision : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("PERRAA it is on!" + other.name);
+        //Debug.Log("Wall is on!" + other.name);
         other.GetComponentInChildren<ShieldPower>().GetComponent<PlayerMovement>().DeactivateShieldOnDoor();
         
             

@@ -27,7 +27,6 @@ public class BombPower : MonoBehaviour
         {
             
             other.GetComponent<PlayerMovement>().ActivateBomb();
-
             Destroy(gameObject);
             
         }

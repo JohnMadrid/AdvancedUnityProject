@@ -21,10 +21,7 @@ public class OneLife : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            Debug.Log( other.GetComponent<PlayerMovement>()._lives);
             other.GetComponent<PlayerMovement>()._lives += 1;
-            Debug.Log("Ive given it a life");
-            Debug.Log( other.GetComponent<PlayerMovement>()._lives);
 
             Destroy(gameObject);
             
