@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     //how much time we want the shield power to last. 
     [SerializeField] private float _shieldPowerTimeout = 5f;
     
-    // to know if the shield power is on. This variable is modified from the ShieldPower script
+    // This variable is modified from the ShieldPower script to know if the shield power is on.
     private bool _shieldPowerON = false;
     // Jumping settings
     private float _jumpSpeed = 7f;
@@ -140,22 +140,6 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
                 _turnSmoothTime);
             
-            // if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
-            // {
-            //     if (anim.GetBool("attacking"))
-            //     {
-            //         return;
-            //     }
-            //     anim.SetBool("running", true); 
-            //     anim.SetInteger("condition", 1);
-            // }
-            //
-            // if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.D))
-            // {
-            //     anim.SetBool("running", false);
-            //     anim.SetInteger("condition", 0);
-            //     // Debug.Log("NOT moving");
-            // }
 
             // Calculate the desired direction of movement depending on the camera movement
             moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -211,8 +195,6 @@ public class PlayerMovement : MonoBehaviour
         }
         anim.SetInteger("condition", 0);
         anim.SetBool("attacking", false);
-        
-        
     }
 
     void Attacking()
@@ -224,8 +206,7 @@ public class PlayerMovement : MonoBehaviour
     void fireProjectile()
     {
 
-        // spawn projeciles
-        //GameObject bullet = Instantiate(projectilePrefab, transform.position + new Vector3(0f,0.7f,0f));
+        // spawn projectiles
         GameObject bullet = Instantiate(projectilePrefab) as GameObject;
         //places the bullet in player position.
         bullet.transform.position = this.transform.position;
@@ -240,7 +221,6 @@ public class PlayerMovement : MonoBehaviour
     void fireBomb()
     {
         // spawn bombs
-      
         GameObject bomb = Instantiate(_bombPrefab) as GameObject;
         //places bomb in player position.
         bomb.transform.position = this.transform.position + new Vector3(0f, 0.4f, 0f);
