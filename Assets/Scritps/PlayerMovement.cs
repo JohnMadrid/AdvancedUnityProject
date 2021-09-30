@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     //shield
     [SerializeField] private GameObject PlayerShield;
     
+    [SerializeField] private GameObject FinishedCanvas;
     
     //how much time we want the shield power to last. 
     [SerializeField] private float _shieldPowerTimeout = 5f;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // This variable is modified from the ShieldPower script to know if the shield power is on.
     private bool _shieldPowerON = false;
     // Jumping settings
-    private float _jumpSpeed = 7f;
+    //private float _jumpSpeed = 7f;
     public Rigidbody rb;
     private bool _playerOnGround = true;
 
@@ -49,21 +50,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speedHelpTimeout = 10f;
     // true if player caught bomb help.
     private bool _bombPower = false;
-    //how much fore to add to the ejection of the projectile. 
+    //how much force to add to the ejection of the projectile. 
     [SerializeField] private float thrust = 70f;
 
     //projectile prefab
     [SerializeField] private GameObject projectilePrefab;
 
     //projectile ammunition speed
-    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float projectileSpeed = 20f;
 
     // motor that drives the player
     public CharacterController controller;
     public Transform cam;
 
    //player speed
-    private float _speed = 6f;
+    private float _speed = 9f;
 
     private float _turnSmoothTime = 0.1f;
 
@@ -127,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("running", false);
             anim.SetInteger("condition", 0);
-            // Debug.Log("NOT moving");
         }
 
         // player and camera move together
@@ -262,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         // player death
         if (_lives == 0)
         {
-            Debug.Log("player is dying");
+            //Debug.Log("player is dying");
             anim.SetBool("dead", true);
             SpawnM.GetComponent<SpawnManager>()._spawningEnemy1ON = false;
             StartCoroutine(DestroyRoutine());
@@ -270,10 +270,10 @@ public class PlayerMovement : MonoBehaviour
         
         IEnumerator DestroyRoutine()
         {
-            Debug.Log("Player's destroy routine called");
+            //Debug.Log("Player's destroy routine called");
             anim.SetInteger("condition", 3);
             yield return new WaitForSeconds(4.2f);
-            Debug.Log("Now destroy player");
+            //Debug.Log("Now destroy player");
             Destroy(gameObject);
 
             // Destroy all other enemies
@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
     public void ActivateSpeed()
     {
         SpeedIconColor.color = new Color32(1,94, 255, 255);
-        _speed = 20f;
+        _speed = 18f;
         StartCoroutine(DeactivateSpeed());
     }
     
@@ -325,6 +325,14 @@ public class PlayerMovement : MonoBehaviour
         _shieldPowerON = false;
     }
     
-    
+    // Pause game after reaching the goal
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        {
+            FinishedCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 }
     

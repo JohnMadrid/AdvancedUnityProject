@@ -24,7 +24,6 @@ public class CoinReward : MonoBehaviour
         {
             // Increase the coins count
             other.GetComponent<PlayerMovement>()._coinRewards += Random.Range(1,12);
-            
             Destroy(gameObject);
 
         }

@@ -72,7 +72,7 @@ public class SpawnManager : MonoBehaviour
 
     public void DestroyAllEnemies()
     {
-        Debug.Log("Destroying remaining enemies");
+        //Debug.Log("Destroying remaining enemies");
         enemies = GameObject.FindGameObjectsWithTag("Enemy1");
         foreach (var enemy in enemies){
             Destroy(enemy);

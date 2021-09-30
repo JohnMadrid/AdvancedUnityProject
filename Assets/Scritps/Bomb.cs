@@ -38,7 +38,7 @@ public class Bomb : MonoBehaviour
     {
         //Code here mainly taken from Unity API
         //Instantiate(effects, transform.position, transform.rotation);
-        // add damage to the sorrounding objects
+        // add damage to the surrounding objects
         // returns all objects colliding with this sphere
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         _playerHit = false;
@@ -54,18 +54,18 @@ public class Bomb : MonoBehaviour
                 if (i.CompareTag("BoxObstacle"))
                 {
                     Destroy(i);
-                    Debug.Log("Box's been destroyed");
+                    //Debug.Log("Box's been destroyed");
                 } 
                 if (i.CompareTag("Enemy1"))
                 {
                     i.GetComponent<Enemy1>().Destroy();
                     //Destroy(i);
-                    Debug.Log("Enemy's been destroyed");
+                    //Debug.Log("Enemy's been destroyed");
                 }
             
                 if (i.CompareTag("Player") && !_playerHit)
                 {
-                    Debug.Log("player was hit");
+                    //Debug.Log("player was hit");
                     i.GetComponent<PlayerMovement>().Damage();
                     //Destroy(i);
                     _playerHit = true;
@@ -76,8 +76,8 @@ public class Bomb : MonoBehaviour
             
         }
 
-        //destroy bomb object once the explostion takes place
-        Debug.Log("the bomb's been destroyed");
+        //destroy bomb object once the explosion takes place
+        //Debug.Log("the bomb's been destroyed");
         Destroy(this.gameObject);
     }
 }

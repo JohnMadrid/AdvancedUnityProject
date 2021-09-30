@@ -34,7 +34,7 @@ public class Enemy1 : MonoBehaviour
         _enemyRigidB = this.GetComponent<Rigidbody>();
         Vector3 randomizedPosition = new Vector3(Random.Range(8f, 15f), 0.2f, Random.Range(8f, 15f));
         transform.position = PlayerView.transform.position + randomizedPosition;
-        Debug.Log("New enemy spawned at relative position ("+randomizedPosition.x+","+randomizedPosition.z+") to PlayerView");
+        //Debug.Log("New enemy spawned at relative position ("+randomizedPosition.x+","+randomizedPosition.z+") to PlayerView");
         StartCoroutine(ChaseRoutine());
 
     }
@@ -44,7 +44,7 @@ public class Enemy1 : MonoBehaviour
     {
         if (gameObject.GetComponent<CapsuleCollider>() == null)
         {
-            Debug.Log("Enemy1 has no collider and must DIEEEEE");
+            //Debug.Log("Enemy1 has no collider and must DIEEEEE");
             Destroy(gameObject);
         }
 
@@ -89,7 +89,7 @@ public class Enemy1 : MonoBehaviour
     {
         _EnemyDead = true;
         anim.SetInteger("condition", 3);
-        Debug.Log("Condition 3 For 3 seconds");
+        //Debug.Log("Condition 3 For 3 seconds");
         yield return new WaitForSeconds(3.5f);
         Destroy(this.gameObject);
 
@@ -97,7 +97,7 @@ public class Enemy1 : MonoBehaviour
 
     public void EnemyDiesEffect()
     {
-        Debug.Log("BEFORE Coroutine");
+        //Debug.Log("BEFORE Coroutine");
         StartCoroutine(EnemyDyingRoutine());
     }
 
@@ -115,7 +115,7 @@ public class Enemy1 : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Enemy hit player");
+            //Debug.Log("Enemy hit player");
             Destroy(this.gameObject);
             other.GetComponent<PlayerMovement>().Damage();
             
