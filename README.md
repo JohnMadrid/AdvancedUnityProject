@@ -8,6 +8,9 @@
   
 The game consists of a maze, a player, weapons, and rewards as well as some enemies that inhabit the maze. The aim of this game is for the player to find the way out of it. Through its journey, the player encounters different weapons and rewards he needs to use to fight the enemies that chase him all over the maze. Both enemies and weapons spawn over time.</p>
 
+![alt text](https://github.com/JohnMadrid/AdvancedUnityProject/blob/main/Images_MazeW/fireball_magic3.png)
+
+
 <div>
 <h2>Game Instructions</h2>
 <h4>Lives:</h4>
@@ -47,7 +50,7 @@ The game consists of a maze, a player, weapons, and rewards as well as some enem
 </ul>
 
 
-<p>For more visual information of the process creating our game prototype, refer to the Images folder.</p>
+<p>For more visual information of the process creating our game prototype, refer to the <strong>Images_MazeW</strong> folder.</p>
 <p>For better communication in the development of our game we used GitKranken which helped us to have updated versions of the project along the process.</p>
 
 
